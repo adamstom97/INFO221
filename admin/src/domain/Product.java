@@ -14,7 +14,7 @@ public class Product {
     private String name;
     private String description;
     private String category;
-    private int price;
+    private double price;
     private int quantity;
 
     @Override
@@ -54,11 +54,11 @@ public class Product {
         this.category = category;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
