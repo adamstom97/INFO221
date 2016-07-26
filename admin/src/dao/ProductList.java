@@ -13,12 +13,18 @@ import java.util.ArrayList;
  */
 public class ProductList {
     private static ArrayList<domain.Product> products = new ArrayList<domain.Product>();
+    private static ArrayList categories = new ArrayList();
     
     public void addProduct(domain.Product product) {
         products.add(product);
+        categories.add(product.getCategory());
     }
     
     public ArrayList getProductList() {
         return products;
+    }
+    
+    public ArrayList getCategoryList() {
+        return categories;
     }
 }

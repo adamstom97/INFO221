@@ -5,6 +5,9 @@
  */
 package gui;
 
+import gui.helpers.SimpleListModel;
+import java.util.ArrayList;
+
 /**
  *
  * @author adath325
@@ -19,6 +22,11 @@ public class ProductEntry extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         boxCategory.setEditable(true);
+        
+        SimpleListModel productsForDisplay = new SimpleListModel();
+        ArrayList display = list.getCategoryList();
+        productsForDisplay.updateItems(display);
+        boxCategory.setModel(productsForDisplay);
     }
 
     /**
@@ -35,7 +43,7 @@ public class ProductEntry extends javax.swing.JDialog {
         lblName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         lblDescription = new javax.swing.JLabel();
-        scrollDescription = new javax.swing.JScrollPane();
+        pneDescription = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
         lblCategory = new javax.swing.JLabel();
         boxCategory = new javax.swing.JComboBox<>();
@@ -60,7 +68,7 @@ public class ProductEntry extends javax.swing.JDialog {
 
         txtDescription.setColumns(20);
         txtDescription.setRows(5);
-        scrollDescription.setViewportView(txtDescription);
+        pneDescription.setViewportView(txtDescription);
 
         lblCategory.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCategory.setText("Category:");
@@ -118,7 +126,7 @@ public class ProductEntry extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(scrollDescription, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(pneDescription, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -137,7 +145,7 @@ public class ProductEntry extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDescription)
-                    .addComponent(scrollDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pneDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCategory)
@@ -236,7 +244,7 @@ public class ProductEntry extends javax.swing.JDialog {
     private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblQuantity;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JScrollPane scrollDescription;
+    private javax.swing.JScrollPane pneDescription;
     private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;

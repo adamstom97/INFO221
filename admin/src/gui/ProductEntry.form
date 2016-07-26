@@ -59,7 +59,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtID" alignment="1" min="-2" pref="268" max="-2" attributes="0"/>
                           <Component id="txtName" alignment="1" min="-2" pref="268" max="-2" attributes="0"/>
-                          <Component id="scrollDescription" alignment="1" min="-2" pref="268" max="-2" attributes="0"/>
+                          <Component id="pneDescription" alignment="1" min="-2" pref="268" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -85,7 +85,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblDescription" min="-2" max="-2" attributes="0"/>
-                  <Component id="scrollDescription" min="-2" pref="74" max="-2" attributes="0"/>
+                  <Component id="pneDescription" min="-2" pref="74" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -135,7 +135,7 @@
         <Property name="text" type="java.lang.String" value="Description:"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="scrollDescription">
+    <Container class="javax.swing.JScrollPane" name="pneDescription">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
