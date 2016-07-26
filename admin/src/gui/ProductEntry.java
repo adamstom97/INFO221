@@ -10,6 +10,7 @@ package gui;
  * @author adath325
  */
 public class ProductEntry extends javax.swing.JDialog {
+    dao.ProductList list = new dao.ProductList();
 
     /**
      * Creates new form ProductEntry
@@ -178,7 +179,8 @@ public class ProductEntry extends javax.swing.JDialog {
         product.setCategory(category);
         product.setPrice(price);
         product.setQuantity(quantity);
-        System.out.println(product);
+        
+        list.addProduct(product);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     /**

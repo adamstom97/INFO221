@@ -89,7 +89,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         ProductEntry entry = new ProductEntry(this, true);
-        entry.setLocationRelativeTo(this);
+        entry.setLocationRelativeTo(null);
         entry.setVisible(true);
     }//GEN-LAST:event_btnNewActionPerformed
 
