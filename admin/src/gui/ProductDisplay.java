@@ -4,19 +4,27 @@
  * and open the template in the editor.
  */
 package gui;
+import gui.helpers.SimpleListModel;
+import java.util.ArrayList;
 
 /**
  *
  * @author adath325
  */
 public class ProductDisplay extends javax.swing.JDialog {
-
+    dao.ProductList list = new dao.ProductList();
+    
     /**
      * Creates new form ProductDisplay
      */
     public ProductDisplay(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        SimpleListModel productsForDisplay = new SimpleListModel();
+        ArrayList<domain.Product> display = list.getProductList();
+        productsForDisplay.updateItems(display);
+        lstDisplay.setModel(productsForDisplay);
     }
 
     /**
