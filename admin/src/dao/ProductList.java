@@ -12,12 +12,14 @@ import java.util.ArrayList;
  * @author adath325
  */
 public class ProductList {
-    private static ArrayList<domain.Product> products = new ArrayList<domain.Product>();
-    private static ArrayList categories = new ArrayList();
+    private static ArrayList<domain.Product> products = new ArrayList<>();
+    private static ArrayList<String> categories = new ArrayList<>();
     
     public void addProduct(domain.Product product) {
         products.add(product);
-        categories.add(product.getCategory());
+        if (!categories.contains(product.getCategory())) {
+            categories.add(product.getCategory());
+        }
     }
     
     public ArrayList getProductList() {

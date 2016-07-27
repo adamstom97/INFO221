@@ -10,26 +10,26 @@ package domain;
  * @author adath325
  */
 public class OrderItem {
-    private int quantityPurchased;
-    private int purchasePrice;
+    private double quantityPurchased;
+    private double purchasePrice;
 
-    public int getQuantityPurchased() {
+    public double getQuantityPurchased() {
         return quantityPurchased;
     }
 
-    public void setQuantityPurchased(int quantityPurchased) {
+    public void setQuantityPurchased(double quantityPurchased) {
         this.quantityPurchased = quantityPurchased;
     }
 
-    public int getPurchasePrice() {
+    public double getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(int purchasePrice) {
+    public void setPurchasePrice(double purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
     
-    public int getItemTotal(){
+    public double getItemTotal(){
         return quantityPurchased * purchasePrice;
     }
 }

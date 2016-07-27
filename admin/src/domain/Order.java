@@ -5,36 +5,43 @@
  */
 package domain;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  *
  * @author adath325
  */
 public class Order {
     private int orderID;
-    private int date;
+    private Date date = new Date();
+    private ArrayList<OrderItem> items = new ArrayList<>();
 
     public int getOrderID() {
         return orderID;
     }
-    /* Code to generate orderID
+
     public void setOrderID(int orderID) {
-         
+        this.orderID = orderID;
     }
-    */
-    public int getDate() {
+    
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(Date date) {
         this.date = date;
     }
-    /* Code to get Order total
-    public int getTotal() {
-         
+    
+    public double getTotal() {
+        double total = 0.0;
+        for (OrderItem item : items) {
+             total += item.getItemTotal();
+        }
+        return total;
     }
     
-    public void addItem(orderItem){
-        
+    public void addItem(OrderItem item){
+        items.add(item);
     }
-    */
 }

@@ -19,7 +19,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "* Product " + productID + ": " + name + ", " + description + "; " + category + "; $" + price + "; " + quantity + " in stock.";
+        return "* Product " + productID + ": " + name + ", " + description + "; " + category + "; $" + String.format("%.2f", price) + "; " + quantity + " in stock.";
     }
 
     public int getProductID() {
