@@ -5,6 +5,8 @@
  */
 package gui;
 
+import dao.ProductList;
+import domain.Product;
 import gui.helpers.SimpleListModel;
 import java.util.ArrayList;
 
@@ -13,7 +15,7 @@ import java.util.ArrayList;
  * @author adath325
  */
 public class ProductEntry extends javax.swing.JDialog {
-    dao.ProductList list = new dao.ProductList();
+    ProductList list = new ProductList();
 
     /**
      * Creates new form ProductEntry
@@ -174,25 +176,11 @@ public class ProductEntry extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        String productIDString = txtID.getText();
-        String name = txtName.getText();
-        String description = txtDescription.getText();
-        String category = (String) boxCategory.getSelectedItem();
-        String priceString = txtPrice.getText();
-        String quantityString = txtQuantity.getText();
-
-        Integer productID = Integer.parseInt(productIDString);
-        Double price = Double.parseDouble(priceString);
-        Integer quantity = Integer.parseInt(quantityString);
-
-        domain.Product product = new domain.Product();
-        product.setProductID(productID);
-        product.setName(name);
-        product.setDescription(description);
-        product.setCategory(category);
-        product.setPrice(price);
-        product.setQuantity(quantity);
-        
+        Product product = new Product(Integer.parseInt(txtID.getText()), 
+                txtName.getText(), txtDescription.getText(), 
+                (String) boxCategory.getSelectedItem(), 
+                Double.parseDouble(txtPrice.getText()), 
+                Integer.parseInt(txtQuantity.getText()));
         list.addProduct(product);
         dispose();
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -231,7 +219,8 @@ public class ProductEntry extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ProductEntry dialog = new ProductEntry(new javax.swing.JFrame(), true);
+                ProductEntry dialog = new ProductEntry(
+                        new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -6,30 +6,69 @@
 package domain;
 
 /**
- *
+ * A class containing all the information on a single product that the customer 
+ * wishes to buy, including how much of it.
+ * 
  * @author adath325
+ * @version 1.0
  */
 public class OrderItem {
     private double quantityPurchased;
-    private double purchasePrice;
+    private Product product;
 
+    /**
+     * A constructor for the OrderItem.
+     * 
+     * @param quantityPurchased the amount of the product that the customer 
+     *                          wishes to buy
+     * @param product           the product that the customer wishes to buy
+     */
+    public OrderItem(double quantityPurchased, Product product) {
+        this.quantityPurchased = quantityPurchased;
+        this.product = product;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" + "quantityPurchased=" + quantityPurchased + 
+                ", product=" + product + '}';
+    }
+
+    /**
+     * @return quantityPurchased {@link OrderItem#quantityPurchased}
+     */
     public double getQuantityPurchased() {
         return quantityPurchased;
     }
 
+    /**
+     * @param quantityPurchased {@link OrderItem#quantityPurchased}
+     */
     public void setQuantityPurchased(double quantityPurchased) {
         this.quantityPurchased = quantityPurchased;
     }
-
-    public double getPurchasePrice() {
-        return purchasePrice;
+    
+    /**
+     * @return product {@link OrderItem#product}
+     */
+    public Product getProduct() {
+        return product;
     }
 
-    public void setPurchasePrice(double purchasePrice) {
-        this.purchasePrice = purchasePrice;
+    /**
+     * @param product {@link OrderItem#product}
+     */
+    public void setProduct(Product product) {
+        this.product = product;
     }
     
+    /**
+     * Calculates the total price for the item by multiplying the product's 
+     * price by the amount of the product that the customer wishes to buy.
+     * 
+     * @return the total price of the item
+     */
     public double getItemTotal(){
-        return quantityPurchased * purchasePrice;
+        return quantityPurchased * product.getPrice();
     }
 }

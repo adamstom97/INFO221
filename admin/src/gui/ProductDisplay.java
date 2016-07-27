@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package gui;
+import dao.ProductList;
+import domain.Product;
 import gui.helpers.SimpleListModel;
 import java.util.ArrayList;
 
@@ -12,7 +14,7 @@ import java.util.ArrayList;
  * @author adath325
  */
 public class ProductDisplay extends javax.swing.JDialog {
-    dao.ProductList list = new dao.ProductList();
+    ProductList list = new ProductList();
     
     /**
      * Creates new form ProductDisplay
@@ -22,7 +24,7 @@ public class ProductDisplay extends javax.swing.JDialog {
         initComponents();
         
         SimpleListModel productsForDisplay = new SimpleListModel();
-        ArrayList<domain.Product> display = list.getProductList();
+        ArrayList<Product> display = list.getProductList();
         productsForDisplay.updateItems(display);
         lstDisplay.setModel(productsForDisplay);
     }
@@ -114,7 +116,8 @@ public class ProductDisplay extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ProductDisplay dialog = new ProductDisplay(new javax.swing.JFrame(), true);
+                ProductDisplay dialog = new ProductDisplay(
+                        new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
