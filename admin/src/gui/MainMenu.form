@@ -28,8 +28,8 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="btnExit" max="32767" attributes="0"/>
                   <Component id="btnView" max="32767" attributes="0"/>
-                  <Component id="lblTitle" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnNew" alignment="0" pref="380" max="32767" attributes="0"/>
+                  <Component id="lblTitle" alignment="0" pref="380" max="32767" attributes="0"/>
+                  <Component id="btnNew" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -46,7 +46,7 @@
               <Component id="btnView" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnExit" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="152" max="32767" attributes="0"/>
+              <EmptySpace pref="151" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,6 +54,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lblTitle">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="1"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Product Administration"/>
       </Properties>

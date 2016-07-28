@@ -48,14 +48,14 @@ public class Product {
     }
 
     /**
-     * @return productID {@link Product#productID} 
+     * @return productID    {@link Product#productID} 
      */
     public int getProductID() {
         return productID;
     }
 
     /**
-     * @param productID {@link Product#productID}
+     * @param productID     {@link Product#productID}
      */
     public void setProductID(int productID) {
         this.productID = productID;
@@ -69,21 +69,21 @@ public class Product {
     }
 
     /**
-     * @param name {@link Product#name}
+     * @param name  {@link Product#name}
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * @return description {@link Product#description}
+     * @return description  {@link Product#description}
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * @param description {@link Product#description}
+     * @param description   {@link Product#description}
      */
     public void setDescription(String description) {
         this.description = description;
@@ -97,21 +97,21 @@ public class Product {
     }
 
     /**
-     * @param category {@link Product#category}
+     * @param category  {@link Product#category}
      */
     public void setCategory(String category) {
         this.category = category;
     }
 
     /**
-     * @return price {@link Product#price}
+     * @return price    {@link Product#price}
      */
     public double getPrice() {
         return price;
     }
 
     /**
-     * @param price {@link Product#price}
+     * @param price     {@link Product#price}
      */
     public void setPrice(double price) {
         this.price = price;
@@ -125,7 +125,7 @@ public class Product {
     }
 
     /**
-     * @param quantity {@link Product#quantity}
+     * @param quantity  {@link Product#quantity}
      */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
