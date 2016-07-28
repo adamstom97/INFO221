@@ -10,14 +10,20 @@ import gui.helpers.SimpleListModel;
 import java.util.ArrayList;
 
 /**
- *
+ * A graphical user interface class for displaying all the products offered for
+ * sale at the shop. The products are taken from the list stored in ProductList.
+ * 
  * @author adath325
+ * @version 1.0
  */
 public class ProductDisplay extends javax.swing.JDialog {
     ProductList list = new ProductList();
     
     /**
      * Creates new form ProductDisplay
+     * 
+     * @param parent the jFrame that the form is created from
+     * @param modal  controls whether the form blocks access to its parent
      */
     public ProductDisplay(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -89,6 +95,7 @@ public class ProductDisplay extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -102,19 +109,19 @@ public class ProductDisplay extends javax.swing.JDialog {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProductDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProductDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProductDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProductDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | 
+                IllegalAccessException | 
+                javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ProductDisplay.class.getName()).
+                    log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 ProductDisplay dialog = new ProductDisplay(
                         new javax.swing.JFrame(), true);

@@ -51,14 +51,14 @@ public class Order {
     }
 
     /**
-     * @return orderID {@link Order#orderID}
+     * @return orderID  {@link Order#orderID}
      */
     public int getOrderID() {
         return orderID;
     }
 
     /**
-     * @param orderID {@link Order#orderID}
+     * @param orderID   {@link Order#orderID}
      */
     public void setOrderID(int orderID) {
         this.orderID = orderID;
@@ -94,12 +94,12 @@ public class Order {
     
     /**
      * Adds a chosen item to the order's item list. If an item of the same 
-     * product has already been added to the list, the two items are combined 
-     * for simplicity, by summing the amount of the product requested each time,
-     * and not adding the new item.
+     * product has already been added to the list, the list is streamlined by
+     * adding the amount of the product newly requested to the amount already 
+     * added, rather than adding the new item list.
      * 
-     * @param item an item selected by the customer that is to be added to the 
-     *             order's item list
+     * @param item  an item selected by the customer that is to be added to the 
+     *              order's item list
      */
     public void addItem(OrderItem item){
         int x = 0;

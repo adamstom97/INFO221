@@ -49,7 +49,7 @@ public class Customer {
     }
 
     /**
-     * @param userName {@link Customer#userName}
+     * @param userName  {@link Customer#userName}
      */
     public void setUserName(String userName) {
         this.userName = userName;
@@ -63,21 +63,21 @@ public class Customer {
     }
 
     /**
-     * @param name {@link Customer#name}
+     * @param name  {@link Customer#name}
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * @return creditCardDetails {@link Customer#creditCardDetails}
+     * @return creditCardDetails    {@link Customer#creditCardDetails}
      */
     public String getCreditCardDetails() {
         return creditCardDetails;
     }
 
     /**
-     * @param creditCardDetails {@link Customer#creditCardDetails}
+     * @param creditCardDetails     {@link Customer#creditCardDetails}
      */
     public void setCreditCardDetails(String creditCardDetails) {
         this.creditCardDetails = creditCardDetails;
@@ -91,7 +91,7 @@ public class Customer {
     }
 
     /**
-     * @param password {@link Customer#password}
+     * @param password  {@link Customer#password}
      */
     public void setPassword(String password) {
         this.password = password;

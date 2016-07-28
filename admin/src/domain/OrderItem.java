@@ -35,28 +35,28 @@ public class OrderItem {
     }
 
     /**
-     * @return quantityPurchased {@link OrderItem#quantityPurchased}
+     * @return quantityPurchased    {@link OrderItem#quantityPurchased}
      */
     public double getQuantityPurchased() {
         return quantityPurchased;
     }
 
     /**
-     * @param quantityPurchased {@link OrderItem#quantityPurchased}
+     * @param quantityPurchased     {@link OrderItem#quantityPurchased}
      */
     public void setQuantityPurchased(double quantityPurchased) {
         this.quantityPurchased = quantityPurchased;
     }
     
     /**
-     * @return product {@link OrderItem#product}
+     * @return product  {@link OrderItem#product}
      */
     public Product getProduct() {
         return product;
     }
 
     /**
-     * @param product {@link OrderItem#product}
+     * @param product   {@link OrderItem#product}
      */
     public void setProduct(Product product) {
         this.product = product;
