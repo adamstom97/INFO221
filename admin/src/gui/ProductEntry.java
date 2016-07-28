@@ -8,7 +8,6 @@ package gui;
 import dao.ProductList;
 import domain.Product;
 import gui.helpers.SimpleListModel;
-import java.util.ArrayList;
 
 /**
  * A graphical user interface class for creating and saving a new product to be
@@ -34,8 +33,7 @@ public class ProductEntry extends javax.swing.JDialog {
         boxCategory.setEditable(true);
         
         SimpleListModel productsForDisplay = new SimpleListModel();
-        ArrayList display = list.getCategoryList();
-        productsForDisplay.updateItems(display);
+        productsForDisplay.updateItems(list.getCategoryList());
         boxCategory.setModel(productsForDisplay);
     }
 

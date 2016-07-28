@@ -5,9 +5,7 @@
  */
 package gui;
 import dao.ProductList;
-import domain.Product;
 import gui.helpers.SimpleListModel;
-import java.util.ArrayList;
 
 /**
  * A graphical user interface class for displaying all the products offered for
@@ -30,8 +28,7 @@ public class ProductDisplay extends javax.swing.JDialog {
         initComponents();
         
         SimpleListModel productsForDisplay = new SimpleListModel();
-        ArrayList<Product> display = list.getProductList();
-        productsForDisplay.updateItems(display);
+        productsForDisplay.updateItems(list.getProductList());
         lstDisplay.setModel(productsForDisplay);
     }
 
