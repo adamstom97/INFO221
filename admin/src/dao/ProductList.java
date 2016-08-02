@@ -50,14 +50,14 @@ public class ProductList {
     /**
      * @return products {@link ProductList#products}
      */
-    public Collection getProductList() {
+    public Collection<Product> getProductList() {
         return products;
     }
     
     /**
      * @return categories   {@link ProductList#categories}
      */
-    public Collection getCategoryList() {
+    public Collection<String> getCategoryList() {
         return categories;
     }
 }
