@@ -6,7 +6,8 @@
 package dao;
 
 import domain.Product;
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.TreeSet;
 
 /**
  * A data access object class for storing a list of all the products offered for 
@@ -21,13 +22,13 @@ public class ProductList {
      * A list of the products offered for sale at the shop. Constructed as each 
      * product is added to the list once the user creates and saves them.
      */
-    private static ArrayList<Product> products = new ArrayList<>();
+    private static Collection<Product> products = new TreeSet<>();
     
     /**
      * A list of the categories that saved products belong to. Constructed as 
      * each new category is created along with a product and saved by the user.
      */
-    private static ArrayList<String> categories = new ArrayList<>();
+    private static Collection<String> categories = new TreeSet<>();
     
     /**
      * Adds a new product to the list of products offered for sale at the shop.
@@ -39,22 +40,24 @@ public class ProductList {
      */
     public void addProduct(Product product) {
         products.add(product);
-        if (!categories.contains(product.getCategory())) {
-            categories.add(product.getCategory());
-        }
+        categories.add(product.getCategory());
+    }
+    
+    public void deleteProduct(Product product) {
+        products.remove(product);
     }
     
     /**
      * @return products {@link ProductList#products}
      */
-    public ArrayList getProductList() {
+    public Collection getProductList() {
         return products;
     }
     
     /**
      * @return categories   {@link ProductList#categories}
      */
-    public ArrayList getCategoryList() {
+    public Collection getCategoryList() {
         return categories;
     }
 }

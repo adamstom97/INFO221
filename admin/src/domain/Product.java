@@ -12,7 +12,7 @@ package domain;
  * @author adath325
  * @version 1.0
  */
-public class Product {
+public class Product implements Comparable<Product>{
     private int productID;
     private String name;
     private String description;
@@ -45,6 +45,13 @@ public class Product {
         return "* Product " + productID + ": " + name + ", " + description + 
                 "; " + category + "; $" + String.format("%.2f", price) + 
                 "; " + quantity + " in stock.";
+    }
+    
+    @Override
+    public int compareTo(Product other) {
+        String myName = this.getName();
+        String theirName = other.getName();
+        return myName.compareTo(theirName);
     }
 
     /**

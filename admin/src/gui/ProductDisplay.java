@@ -5,7 +5,9 @@
  */
 package gui;
 import dao.ProductList;
+import domain.Product;
 import gui.helpers.SimpleListModel;
+import javax.swing.JOptionPane;
 
 /**
  * A graphical user interface class for displaying all the products offered for
@@ -16,6 +18,7 @@ import gui.helpers.SimpleListModel;
  */
 public class ProductDisplay extends javax.swing.JDialog {
     ProductList list = new ProductList();
+    SimpleListModel productsForDisplay = new SimpleListModel();
     
     /**
      * Creates new form ProductDisplay
@@ -27,7 +30,6 @@ public class ProductDisplay extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        SimpleListModel productsForDisplay = new SimpleListModel();
         productsForDisplay.updateItems(list.getProductList());
         lstDisplay.setModel(productsForDisplay);
     }
@@ -44,20 +46,26 @@ public class ProductDisplay extends javax.swing.JDialog {
         pneDisplay = new javax.swing.JScrollPane();
         lstDisplay = new javax.swing.JList<>();
         btnExit = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lstDisplay.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         pneDisplay.setViewportView(lstDisplay);
 
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
+            }
+        });
+
+        btnEdit.setText("Edit");
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -69,7 +77,12 @@ public class ProductDisplay extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pneDisplay)
-                    .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -78,7 +91,10 @@ public class ProductDisplay extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(pneDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnExit)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExit)
+                    .addComponent(btnEdit)
+                    .addComponent(btnDelete))
                 .addContainerGap())
         );
 
@@ -88,6 +104,22 @@ public class ProductDisplay extends javax.swing.JDialog {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         dispose();
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        if (lstDisplay.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please select a product to "
+                    + "delete.", "No Product Selected for Deletion",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            int result = JOptionPane.showConfirmDialog(this, "Are you sure you "
+                    + "want to delete this product?");
+            if (result == JOptionPane.YES_OPTION) {
+                list.deleteProduct(lstDisplay.getSelectedValue());
+                productsForDisplay.updateItems(list.getProductList());
+                lstDisplay.setModel(productsForDisplay);
+            }
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,8 +166,10 @@ public class ProductDisplay extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExit;
-    private javax.swing.JList<String> lstDisplay;
+    private javax.swing.JList<Product> lstDisplay;
     private javax.swing.JScrollPane pneDisplay;
     // End of variables declaration//GEN-END:variables
 }
