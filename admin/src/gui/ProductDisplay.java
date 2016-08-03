@@ -129,7 +129,7 @@ public class ProductDisplay extends javax.swing.JDialog {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         if (lstDisplay.isSelectionEmpty()) {
             JOptionPane.showMessageDialog(this, "Please select a product to "
-                    + "edit.", "No Product Selected for Editing",
+                    + "edit.", "No Product Selected for EDiting",
                     JOptionPane.ERROR_MESSAGE);
         } else {
             ProductEntry edit = new ProductEntry(this, true, 

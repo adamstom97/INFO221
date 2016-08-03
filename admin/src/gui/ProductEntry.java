@@ -8,55 +8,54 @@ package gui;
 import dao.ProductList;
 import domain.Product;
 import gui.helpers.SimpleListModel;
+import java.awt.Window;
 
 /**
  * A graphical user interface class for creating and saving a new product to be
  * added to the shop's inventory. When the save button is pressed, the new
- * product is created from the entered information, and passed to the 
- * ProductList to be stored. 
- * 
+ * product is created from the entered information, and passed to the
+ * ProductList to be stored.
+ *
  * @author adath325
  * @version 1.0
  */
 public class ProductEntry extends javax.swing.JDialog {
+
     ProductList list = new ProductList();
     SimpleListModel productsForDisplay = new SimpleListModel();
-    
+    Product product = new Product();
+
     /**
      * Creates new form ProductEntry
-     * 
+     *
      * @param parent the jFrame that the form is created from
-     * @param modal  controls whether the form blocks access to its parent
+     * @param modal controls whether the form blocks access to its parent
      */
-    public ProductEntry(java.awt.Window parent, boolean modal) {
+    public ProductEntry(Window parent, boolean modal) {
         super(parent);
-        super.setModal(modal);
+        setModal(modal);
+
         initComponents();
         boxCategory.setEditable(true);
-              
+
         productsForDisplay.updateItems(list.getCategoryList());
         boxCategory.setModel(productsForDisplay);
     }
 
-    public ProductEntry(java.awt.Window parent, boolean modal, Product editProduct) 
-    {
+    public ProductEntry(Window parent, boolean modal, Product product) {
         this(parent, modal);
-        initComponents();
-        boxCategory.setEditable(true);
-            
-        productsForDisplay.updateItems(list.getCategoryList());
-        boxCategory.setModel(productsForDisplay);
-        
-        txtID.setText(editProduct.getProductID().toString());
+        this.product = product;
+
+        txtID.setText(product.getProductID().toString());
+        txtName.setText(product.getName());
+        txtDescription.setText(product.getDescription());
+        txtPrice.setText(product.getPrice().toString());
+        txtQuantity.setText(product.getQuantity().toString());
+        boxCategory.setSelectedItem(product.getCategory());
+
         txtID.setEditable(false);
-        
-        txtName.setText(editProduct.getName());
-        txtDescription.setText(editProduct.getDescription());
-        boxCategory.setSelectedItem(editProduct.getCategory());
-        txtPrice.setText(editProduct.getPrice().toString());
-        txtQuantity.setText(editProduct.getQuantity().toString());
-        list.deleteProduct(editProduct);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -197,13 +196,18 @@ public class ProductEntry extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        Product product = new Product(Integer.parseInt(txtID.getText()),
-                txtName.getText(), txtDescription.getText(),
-                (String) boxCategory.getSelectedItem(),
-                Double.parseDouble(txtPrice.getText()),
-                Integer.parseInt(txtQuantity.getText()));
+        if (txtID.isEditable()) {
+            product.setProductID(Integer.parseInt(txtID.getText()));
+        }
+
+        product.setName(txtName.getText());
+        product.setDescription(txtDescription.getText());
+        product.setCategory((String) boxCategory.getSelectedItem());
+        product.setPrice(Double.parseDouble(txtPrice.getText()));
+        product.setQuantity(Integer.parseInt(txtQuantity.getText()));
+        
         list.addProduct(product);
-        dispose();       
+         dispose();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -227,14 +231,14 @@ public class ProductEntry extends javax.swing.JDialog {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | 
-                IllegalAccessException | 
+        } catch (ClassNotFoundException | InstantiationException |
+                IllegalAccessException |
                 javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ProductEntry.class.getName()).
                     log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the dialog */

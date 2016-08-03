@@ -21,25 +21,10 @@ public class Product implements Comparable<Product>{
     private Integer quantity;
 
     /**
-     * A constructor for the product.
-     * 
-     * @param productID     a unique ID for the product
-     * @param name          the product's name
-     * @param description   a description of the product
-     * @param category      the category that the product belongs to
-     * @param price         how much the product costs, each
-     * @param quantity      the amount of the product available for sale
+     * A default constructor for the product.
      */
-    public Product(Integer productID, String name, String description, 
-            String category, Double price, Integer quantity) {
-        this.productID = productID;
-        this.name = name;
-        this.description = description;
-        this.category = category;
-        this.price = price;
-        this.quantity = quantity;
-    }
-
+    public Product() {}   
+   
     @Override
     public String toString() {
         return "* Product " + productID + ": " + name + ", " + description + 
@@ -61,6 +46,10 @@ public class Product implements Comparable<Product>{
         return productID;
     }
 
+    public void setProductID(Integer productID) {
+        this.productID = productID;
+    }
+    
     /**
      * @return name {@link Product#name}
      */

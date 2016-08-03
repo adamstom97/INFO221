@@ -42,11 +42,11 @@ public class ProductList {
         products.add(product);
         categories.add(product.getCategory());
     }
-       
+    
     public void deleteProduct(Product product) {
         products.remove(product);
     }
-    
+          
     /**
      * @return products {@link ProductList#products}
      */
