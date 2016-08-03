@@ -13,12 +13,12 @@ package domain;
  * @version 1.0
  */
 public class Product implements Comparable<Product>{
-    private int productID;
+    private Integer productID;
     private String name;
     private String description;
     private String category;
-    private double price;
-    private int quantity;
+    private Double price;
+    private Integer quantity;
 
     /**
      * A constructor for the product.
@@ -30,8 +30,8 @@ public class Product implements Comparable<Product>{
      * @param price         how much the product costs, each
      * @param quantity      the amount of the product available for sale
      */
-    public Product(int productID, String name, String description, 
-            String category, double price, int quantity) {
+    public Product(Integer productID, String name, String description, 
+            String category, Double price, Integer quantity) {
         this.productID = productID;
         this.name = name;
         this.description = description;
@@ -57,15 +57,8 @@ public class Product implements Comparable<Product>{
     /**
      * @return productID    {@link Product#productID} 
      */
-    public int getProductID() {
+    public Integer getProductID() {
         return productID;
-    }
-
-    /**
-     * @param productID     {@link Product#productID}
-     */
-    public void setProductID(int productID) {
-        this.productID = productID;
     }
 
     /**
@@ -113,28 +106,28 @@ public class Product implements Comparable<Product>{
     /**
      * @return price    {@link Product#price}
      */
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
     /**
      * @param price     {@link Product#price}
      */
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
     /**
      * @return quantity {@link Product#quantity}
      */
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
     /**
      * @param quantity  {@link Product#quantity}
      */
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 }

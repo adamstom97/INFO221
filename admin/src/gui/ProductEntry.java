@@ -20,23 +20,43 @@ import gui.helpers.SimpleListModel;
  */
 public class ProductEntry extends javax.swing.JDialog {
     ProductList list = new ProductList();
-
+    SimpleListModel productsForDisplay = new SimpleListModel();
+    
     /**
      * Creates new form ProductEntry
      * 
      * @param parent the jFrame that the form is created from
      * @param modal  controls whether the form blocks access to its parent
      */
-    public ProductEntry(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public ProductEntry(java.awt.Window parent, boolean modal) {
+        super(parent);
+        super.setModal(modal);
         initComponents();
         boxCategory.setEditable(true);
-        
-        SimpleListModel productsForDisplay = new SimpleListModel();
+              
         productsForDisplay.updateItems(list.getCategoryList());
         boxCategory.setModel(productsForDisplay);
     }
 
+    public ProductEntry(java.awt.Window parent, boolean modal, Product editProduct) 
+    {
+        this(parent, modal);
+        initComponents();
+        boxCategory.setEditable(true);
+            
+        productsForDisplay.updateItems(list.getCategoryList());
+        boxCategory.setModel(productsForDisplay);
+        
+        txtID.setText(editProduct.getProductID().toString());
+        txtID.setEditable(false);
+        
+        txtName.setText(editProduct.getName());
+        txtDescription.setText(editProduct.getDescription());
+        boxCategory.setSelectedItem(editProduct.getCategory());
+        txtPrice.setText(editProduct.getPrice().toString());
+        txtQuantity.setText(editProduct.getQuantity().toString());
+        list.deleteProduct(editProduct);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -177,13 +197,13 @@ public class ProductEntry extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        Product product = new Product(Integer.parseInt(txtID.getText()), 
-                txtName.getText(), txtDescription.getText(), 
-                (String) boxCategory.getSelectedItem(), 
-                Double.parseDouble(txtPrice.getText()), 
+        Product product = new Product(Integer.parseInt(txtID.getText()),
+                txtName.getText(), txtDescription.getText(),
+                (String) boxCategory.getSelectedItem(),
+                Double.parseDouble(txtPrice.getText()),
                 Integer.parseInt(txtQuantity.getText()));
         list.addProduct(product);
-        dispose();
+        dispose();       
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

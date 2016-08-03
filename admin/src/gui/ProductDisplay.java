@@ -61,6 +61,11 @@ public class ProductDisplay extends javax.swing.JDialog {
         });
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +125,21 @@ public class ProductDisplay extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        if (lstDisplay.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please select a product to "
+                    + "edit.", "No Product Selected for Editing",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            ProductEntry edit = new ProductEntry(this, true, 
+                    lstDisplay.getSelectedValue());
+            edit.setLocationRelativeTo(null);
+            edit.setVisible(true);
+            productsForDisplay.updateItems(list.getProductList());
+            lstDisplay.setModel(productsForDisplay);
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
 
     /**
      * @param args the command line arguments
