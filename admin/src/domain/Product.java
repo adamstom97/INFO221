@@ -27,16 +27,14 @@ public class Product implements Comparable<Product>{
    
     @Override
     public String toString() {
-        return "* Product " + productID + ": " + name + ", " + description + 
-                "; " + category + "; $" + String.format("%.2f", price) + 
-                "; " + quantity + " in stock.";
+        return name;
     }
     
     @Override
     public int compareTo(Product other) {
-        String myName = this.getName();
-        String theirName = other.getName();
-        return myName.compareTo(theirName);
+        Integer myID = this.getProductID();
+        Integer theirID = other.getProductID();
+        return myID.compareTo(theirID);
     }
 
     /**

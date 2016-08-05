@@ -7,6 +7,9 @@ package dao;
 
 import domain.Product;
 import java.util.Collection;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 /**
@@ -30,6 +33,10 @@ public class ProductList {
      */
     private static Collection<String> categories = new TreeSet<>();
     
+    private static SortedMap<String, Product> productsByID = new TreeMap<>();
+    private static SortedMap<String, Set<Product>> productsByCategory = new 
+        TreeMap<>();
+    
     /**
      * Adds a new product to the list of products offered for sale at the shop.
      * If the product belongs to a new category, that category is added to the
@@ -40,7 +47,17 @@ public class ProductList {
      */
     public void addProduct(Product product) {
         products.add(product);
-        categories.add(product.getCategory());
+        productsByID.put(product.getProductID().toString(), product);
+        if (!categories.contains(product.getCategory())) {
+            categories.add(product.getCategory());
+            Set<Product> productsByCategoryInner = new TreeSet<>();
+            productsByCategoryInner.add(product);
+            productsByCategory.put(product.getCategory(), productsByCategoryInner);
+        } else {
+            Set<Product> productsByCategoryInner = 
+                    productsByCategory.get(product.getCategory());
+            productsByCategoryInner.add(product);        
+        }
     }
     
     public void deleteProduct(Product product) {
@@ -59,5 +76,13 @@ public class ProductList {
      */
     public Collection<String> getCategoryList() {
         return categories;
+    }
+    
+    public Product getProductByID(String productID) {
+        return productsByID.get(productID);
+    }
+    
+    public Set<Product> getProductsByCategory(String category) {
+        return productsByCategory.get(category);
     }
 }
