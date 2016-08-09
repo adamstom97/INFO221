@@ -19,7 +19,7 @@ import java.util.TreeSet;
  * @author adath325
  * @version 1.0
  */
-public class ProductList {
+public class ProductList implements DAO {
     
     /**
      * A list of the products offered for sale at the shop. Constructed as each 
@@ -37,14 +37,7 @@ public class ProductList {
     private static SortedMap<String, Set<Product>> productsByCategory = new 
         TreeMap<>();
     
-    /**
-     * Adds a new product to the list of products offered for sale at the shop.
-     * If the product belongs to a new category, that category is added to the
-     * list of categories that saved products belong to.
-     * 
-     * @param product   a new product that the user has created and saved, to be
-     *                  added to the list of saved products in the shop.
-     */
+    @Override
     public void addProduct(Product product) {
         products.add(product);
         productsByID.put(product.getProductID().toString(), product);
@@ -60,28 +53,27 @@ public class ProductList {
         }
     }
     
+    @Override
     public void deleteProduct(Product product) {
         products.remove(product);
     }
           
-    /**
-     * @return products {@link ProductList#products}
-     */
+    @Override
     public Collection<Product> getProductList() {
         return products;
     }
     
-    /**
-     * @return categories   {@link ProductList#categories}
-     */
+    @Override
     public Collection<String> getCategoryList() {
         return categories;
     }
     
+    @Override
     public Product getProductByID(String productID) {
         return productsByID.get(productID);
     }
     
+    @Override
     public Set<Product> getProductsByCategory(String category) {
         return productsByCategory.get(category);
     }
