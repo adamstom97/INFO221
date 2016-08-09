@@ -5,7 +5,7 @@
  */
 package gui;
 
-import dao.ProductList;
+import dao.ProductDB;
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import java.awt.Window;
@@ -21,7 +21,7 @@ import java.awt.Window;
  */
 public class ProductEntry extends javax.swing.JDialog {
 
-    ProductList list = new ProductList();
+    ProductDB list = new ProductDB();
     SimpleListModel productsForDisplay = new SimpleListModel();
     Product product = new Product();
 

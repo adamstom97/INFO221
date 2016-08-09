@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
-import dao.ProductList;
+import dao.ProductDB;
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import javax.swing.JOptionPane;
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @version 1.0
  */
 public class ProductDisplay extends javax.swing.JDialog {
-    ProductList list = new ProductList();
+    ProductDB list = new ProductDB();
     SimpleListModel productsForDisplay = new SimpleListModel();
     SimpleListModel categoriesForDisplay = new SimpleListModel();
     
