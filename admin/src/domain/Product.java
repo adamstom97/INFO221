@@ -23,7 +23,17 @@ public class Product implements Comparable<Product>{
     /**
      * A default constructor for the product.
      */
-    public Product() {}   
+    public Product() {}
+
+    public Product(Integer productID, String name, String description, 
+            String category, Double price, Integer quantity) {
+        this.productID = productID;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.price = price;
+        this.quantity = quantity;
+    }
    
     @Override
     public String toString() {

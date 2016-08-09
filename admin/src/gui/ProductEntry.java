@@ -9,6 +9,7 @@ import dao.ProductDB;
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import java.awt.Window;
+import javax.swing.JOptionPane;
 
 /**
  * A graphical user interface class for creating and saving a new product to be
@@ -197,6 +198,12 @@ public class ProductEntry extends javax.swing.JDialog {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if (txtID.isEditable()) {
+            if (list.getProductByID(txtID.getText()) != null){
+                JOptionPane.showMessageDialog(this, "There is already a product"
+                        + " with that ID.", "ID Already Exists",
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             product.setProductID(Integer.parseInt(txtID.getText()));
         }
 

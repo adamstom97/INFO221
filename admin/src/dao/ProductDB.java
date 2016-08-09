@@ -19,7 +19,6 @@ import java.util.TreeSet;
  * @author adath325
  */
 public class ProductDB implements DAO {
-
     private String url = "jdbc:h2:tcp://localhost:9097/project;IFEXISTS=TRUE";
 
     public ProductDB() {
@@ -67,13 +66,10 @@ public class ProductDB implements DAO {
             ResultSet rs = stmt.executeQuery();
             Collection<Product> products = new TreeSet<>();
             while (rs.next()) {
-                Product p = new Product();
-                p.setProductID(rs.getInt("productID"));
-                p.setName(rs.getString("name"));
-                p.setDescription(rs.getString("description"));
-                p.setCategory(rs.getString("category"));
-                p.setPrice(rs.getDouble("price"));
-                p.setQuantity(rs.getInt("quantity"));
+                Product p = new Product(rs.getInt("productID"), 
+                        rs.getString("name"), rs.getString("description"), 
+                        rs.getString("category"), rs.getDouble("price"), 
+                        rs.getInt("quantity"));
                 products.add(p);
             }
             return products;
@@ -100,10 +96,41 @@ public class ProductDB implements DAO {
 
     @Override
     public Product getProductByID(String productID) {
+        String sql = "select * from products where productID = " + productID;
+        try (Connection dbCon = JdbcConnection.getConnection(url);
+                PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Product p = new Product(rs.getInt("productID"), 
+                        rs.getString("name"), rs.getString("description"), 
+                        rs.getString("category"), rs.getDouble("price"), 
+                        rs.getInt("quantity"));
+                return p;
+            } else {
+                return null;
+            }            
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }       
     }
 
     @Override
-    public Set<Product> getProductsByCategory(String category
-    ) {
+    public Set<Product> getProductsByCategory(String category) {
+        String sql = "select * from products where category = " + category;
+        try (Connection dbCon = JdbcConnection.getConnection(url);
+                PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+            ResultSet rs = stmt.executeQuery();
+            Set<Product> products = new TreeSet<>();
+            while (rs.next()) {
+                Product p = new Product(rs.getInt("productID"), 
+                        rs.getString("name"), rs.getString("description"), 
+                        rs.getString("category"), rs.getDouble("price"), 
+                        rs.getInt("quantity"));
+                products.add(p);
+            } 
+            return products;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }       
     }
 }

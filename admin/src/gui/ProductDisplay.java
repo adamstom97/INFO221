@@ -167,8 +167,12 @@ public class ProductDisplay extends javax.swing.JDialog {
                     + "want to delete this product?");
             if (result == JOptionPane.YES_OPTION) {
                 list.deleteProduct(lstDisplay.getSelectedValue());
+                
                 productsForDisplay.updateItems(list.getProductList());
                 lstDisplay.setModel(productsForDisplay);
+                
+                categoriesForDisplay.updateItems(list.getCategoryList());
+                boxCategoryFilter.setModel(categoriesForDisplay);
             }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
@@ -183,8 +187,12 @@ public class ProductDisplay extends javax.swing.JDialog {
                     lstDisplay.getSelectedValue());
             edit.setLocationRelativeTo(null);
             edit.setVisible(true);
+            
             productsForDisplay.updateItems(list.getProductList());
             lstDisplay.setModel(productsForDisplay);
+            
+            categoriesForDisplay.updateItems(list.getCategoryList());
+            boxCategoryFilter.setModel(categoriesForDisplay);
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
