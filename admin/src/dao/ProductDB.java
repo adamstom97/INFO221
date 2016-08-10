@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
@@ -64,7 +65,7 @@ public class ProductDB implements DAO {
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
             ResultSet rs = stmt.executeQuery();
-            Collection<Product> products = new TreeSet<>();
+            Collection<Product> products = new ArrayList<>();
             while (rs.next()) {
                 Product p = new Product(rs.getInt("productID"), 
                         rs.getString("name"), rs.getString("description"), 
@@ -96,9 +97,10 @@ public class ProductDB implements DAO {
 
     @Override
     public Product getProductByID(String productID) {
-        String sql = "select * from products where productID = " + productID;
+        String sql = "select * from products where productID = ?";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+            stmt.setInt(1, Integer.parseInt(productID));
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 Product p = new Product(rs.getInt("productID"), 
@@ -116,9 +118,10 @@ public class ProductDB implements DAO {
 
     @Override
     public Set<Product> getProductsByCategory(String category) {
-        String sql = "select * from products where category = " + category;
+        String sql = "select * from products where category = ?";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+            stmt.setString(1, category);
             ResultSet rs = stmt.executeQuery();
             Set<Product> products = new TreeSet<>();
             while (rs.next()) {
