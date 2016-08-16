@@ -9,33 +9,36 @@ import dao.ProductList;
 import domain.Product;
 import java.util.Collection;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import dao.Dao;
+import java.util.Arrays;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 /**
  *
  * @author adath325
  */
+@RunWith(Parameterized.class)
 public class daoTest {
     Dao list;
     private Product product1;
     private Product product2;
     private Product product3;
     
-    public daoTest() {
-        this.list = new ProductDB("jdbc:h2:tcp://localhost:9097/project-testing;IFEXISTS=TRUE");
+    @Parameterized.Parameters
+        public static Collection<?> daoObjectsToTest() {
+        return Arrays.asList(new Object[][]{
+        {new ProductList()},
+        {new ProductDB(
+                "jdbc:h2:tcp://localhost:9097/project-testing;IFEXISTS=TRUE")}
+        });
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
+
+    public daoTest(Dao list) {
+        this.list = list;
     }
     
     @Before
