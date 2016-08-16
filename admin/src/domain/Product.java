@@ -5,6 +5,8 @@
  */
 package domain;
 
+import java.util.Objects;
+
 /**
  * A class containing all the information on a single product offered for
  * sale at the shop. 
@@ -45,6 +47,31 @@ public class Product implements Comparable<Product>{
         Integer myID = this.getProductID();
         Integer theirID = other.getProductID();
         return myID.compareTo(theirID);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.productID);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product other = (Product) obj;
+        if (!Objects.equals(this.productID, other.productID)) {
+            return false;
+        }
+        return true;
     }
 
     /**

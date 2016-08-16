@@ -5,6 +5,8 @@
  */
 package gui;
 
+import dao.DAO;
+
 /**
  * A graphical user interface class featuring the MainMenu of the product admin 
  * system, including buttons to ope the ProductEntry and ProductDisplay dialogs.
@@ -13,12 +15,15 @@ package gui;
  * @version 1.0
  */
 public class MainMenu extends javax.swing.JFrame {
+    DAO list;
 
     /**
      * Creates new form MainMenu
+     * @param list
      */
-    public MainMenu() {
+    public MainMenu(DAO list) {
         initComponents();
+        this.list = list;
     }
 
     /**
@@ -97,52 +102,17 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        ProductEntry entry = new ProductEntry(this, true);
+        ProductEntry entry = new ProductEntry(this, true, list);
         entry.setLocationRelativeTo(null);
         entry.setVisible(true);
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        ProductDisplay display = new ProductDisplay(this, true);
+        ProductDisplay display = new ProductDisplay(this, true, list);
         display.setLocationRelativeTo(null);
         display.setVisible(true);
     }//GEN-LAST:event_btnViewActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    @SuppressWarnings("Convert2Lambda")
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | 
-                IllegalAccessException | 
-                javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).
-                    log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MainMenu().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;

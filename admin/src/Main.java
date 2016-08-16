@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import dao.DAO;
+import dao.ProductDB;
 import gui.MainMenu;
 
 /**
@@ -12,14 +14,15 @@ import gui.MainMenu;
  * @version 1.0
  */
 public class Main {
-
+    private static DAO list = new ProductDB();
+    
     /**
      * Creates an instance of the MainMenu and centers it on the screen.
      * 
      * @param args  the command line arguments
      */
     public static void main(String[] args) {
-        MainMenu frame = new MainMenu();
+        MainMenu frame = new MainMenu(list);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);        
     }

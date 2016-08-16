@@ -5,7 +5,7 @@
  */
 package gui;
 
-import dao.ProductDB;
+import dao.DAO;
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import java.awt.Window;
@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class ProductEntry extends javax.swing.JDialog {
 
-    ProductDB list = new ProductDB();
+    DAO list;
     SimpleListModel productsForDisplay = new SimpleListModel();
     Product product = new Product();
 
@@ -31,10 +31,12 @@ public class ProductEntry extends javax.swing.JDialog {
      *
      * @param parent the jFrame that the form is created from
      * @param modal controls whether the form blocks access to its parent
+     * @param list
      */
-    public ProductEntry(Window parent, boolean modal) {
+    public ProductEntry(Window parent, boolean modal, DAO list) {
         super(parent);
         setModal(modal);
+        this.list = list;
 
         initComponents();
         boxCategory.setEditable(true);
@@ -43,8 +45,9 @@ public class ProductEntry extends javax.swing.JDialog {
         boxCategory.setModel(productsForDisplay);
     }
 
-    public ProductEntry(Window parent, boolean modal, Product product) {
-        this(parent, modal);
+    public ProductEntry(Window parent, boolean modal, DAO list, Product product) 
+    {
+        this(parent, modal, list);
         this.product = product;
 
         txtID.setText(product.getProductID().toString());
@@ -220,50 +223,6 @@ public class ProductEntry extends javax.swing.JDialog {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    @SuppressWarnings("Convert2Lambda")
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException |
-                IllegalAccessException |
-                javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProductEntry.class.getName()).
-                    log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                ProductEntry dialog = new ProductEntry(
-                        new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxCategory;

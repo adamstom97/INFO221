@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
-import dao.ProductDB;
+import dao.DAO;
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import javax.swing.JOptionPane;
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @version 1.0
  */
 public class ProductDisplay extends javax.swing.JDialog {
-    ProductDB list = new ProductDB();
+    DAO list;
     SimpleListModel productsForDisplay = new SimpleListModel();
     SimpleListModel categoriesForDisplay = new SimpleListModel();
     
@@ -26,10 +26,12 @@ public class ProductDisplay extends javax.swing.JDialog {
      * 
      * @param parent the jFrame that the form is created from
      * @param modal  controls whether the form blocks access to its parent
+     * @param list
      */
-    public ProductDisplay(java.awt.Frame parent, boolean modal) {
+    public ProductDisplay(java.awt.Frame parent, boolean modal, DAO list) {
         super(parent, modal);
         initComponents();
+        this.list = list;
                
         productsForDisplay.updateItems(list.getProductList());
         lstDisplay.setModel(productsForDisplay);  
@@ -183,7 +185,7 @@ public class ProductDisplay extends javax.swing.JDialog {
                     + "edit.", "No Product Selected",
                     JOptionPane.ERROR_MESSAGE);
         } else {
-            ProductEntry edit = new ProductEntry(this, true, 
+            ProductEntry edit = new ProductEntry(this, true, list,
                     lstDisplay.getSelectedValue());
             edit.setLocationRelativeTo(null);
             edit.setVisible(true);
@@ -226,50 +228,6 @@ public class ProductDisplay extends javax.swing.JDialog {
         btnEdit.setEnabled(true);
         btnDelete.setEnabled(true);
     }//GEN-LAST:event_boxCategoryFilterActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    @SuppressWarnings("Convert2Lambda")
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | 
-                IllegalAccessException | 
-                javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProductDisplay.class.getName()).
-                    log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                ProductDisplay dialog = new ProductDisplay(
-                        new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxCategoryFilter;
