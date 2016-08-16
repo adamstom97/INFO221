@@ -91,28 +91,39 @@ public class ProductEntry extends javax.swing.JDialog {
         lblID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblID.setText("ID:");
 
+        txtID.setName("txtID"); // NOI18N
+
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblName.setText("Name:");
+
+        txtName.setName("txtName"); // NOI18N
 
         lblDescription.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDescription.setText("Description:");
 
         txtDescription.setColumns(20);
         txtDescription.setRows(5);
+        txtDescription.setName("txtDescription"); // NOI18N
         pneDescription.setViewportView(txtDescription);
 
         lblCategory.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCategory.setText("Category:");
 
         boxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxCategory.setName("boxCategory"); // NOI18N
 
         lblPrice.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPrice.setText("Price:");
 
+        txtPrice.setName("txtPrice"); // NOI18N
+
         lblQuantity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblQuantity.setText("Quantity in Stock:");
 
+        txtQuantity.setName("txtQuantity"); // NOI18N
+
         btnSave.setText("Save");
+        btnSave.setName("btnSave"); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -120,6 +131,7 @@ public class ProductEntry extends javax.swing.JDialog {
         });
 
         btnCancel.setText("Cancel");
+        btnCancel.setName("btnCancel"); // NOI18N
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);

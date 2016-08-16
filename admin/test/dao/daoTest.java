@@ -1,3 +1,5 @@
+package dao;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -60,7 +62,7 @@ public class daoTest {
     }
 
     @Test
-    public void testDAOAddAndDelete() {      
+    public void testAddAndDelete() {      
         Product saved = new Product(4, "D", "dd", "b", 1.00, 1);
         list.addProduct(saved);
         Product retrieved = list.getProductByID("4");
