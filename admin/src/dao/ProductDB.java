@@ -19,7 +19,7 @@ import java.util.TreeSet;
  *
  * @author adath325
  */
-public class ProductDB implements DAO {
+public class ProductDB implements Dao {
     private String url = "jdbc:h2:tcp://localhost:9097/project;IFEXISTS=TRUE";
 
     public ProductDB() {

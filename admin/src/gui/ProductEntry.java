@@ -5,11 +5,11 @@
  */
 package gui;
 
-import dao.DAO;
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import java.awt.Window;
 import javax.swing.JOptionPane;
+import dao.Dao;
 
 /**
  * A graphical user interface class for creating and saving a new product to be
@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class ProductEntry extends javax.swing.JDialog {
 
-    DAO list;
+    Dao list;
     SimpleListModel productsForDisplay = new SimpleListModel();
     Product product = new Product();
 
@@ -33,7 +33,7 @@ public class ProductEntry extends javax.swing.JDialog {
      * @param modal controls whether the form blocks access to its parent
      * @param list
      */
-    public ProductEntry(Window parent, boolean modal, DAO list) {
+    public ProductEntry(Window parent, boolean modal, Dao list) {
         super(parent);
         setModal(modal);
         this.list = list;
@@ -45,7 +45,7 @@ public class ProductEntry extends javax.swing.JDialog {
         boxCategory.setModel(productsForDisplay);
     }
 
-    public ProductEntry(Window parent, boolean modal, DAO list, Product product) 
+    public ProductEntry(Window parent, boolean modal, Dao list, Product product) 
     {
         this(parent, modal, list);
         this.product = product;

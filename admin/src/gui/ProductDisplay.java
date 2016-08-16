@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 package gui;
-import dao.DAO;
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import javax.swing.JOptionPane;
+import dao.Dao;
 
 /**
  * A graphical user interface class for displaying all the products offered for
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @version 1.0
  */
 public class ProductDisplay extends javax.swing.JDialog {
-    DAO list;
+    Dao list;
     SimpleListModel productsForDisplay = new SimpleListModel();
     SimpleListModel categoriesForDisplay = new SimpleListModel();
     
@@ -28,7 +28,7 @@ public class ProductDisplay extends javax.swing.JDialog {
      * @param modal  controls whether the form blocks access to its parent
      * @param list
      */
-    public ProductDisplay(java.awt.Frame parent, boolean modal, DAO list) {
+    public ProductDisplay(java.awt.Frame parent, boolean modal, Dao list) {
         super(parent, modal);
         initComponents();
         this.list = list;

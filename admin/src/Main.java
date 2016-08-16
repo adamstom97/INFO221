@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import dao.DAO;
 import dao.ProductDB;
 import gui.MainMenu;
+import dao.Dao;
 
 /**
  * A Main class from which to run the entire admin project.
@@ -14,7 +14,7 @@ import gui.MainMenu;
  * @version 1.0
  */
 public class Main {
-    private static DAO list = new ProductDB();
+    private static Dao list = new ProductDB();
     
     /**
      * Creates an instance of the MainMenu and centers it on the screen.

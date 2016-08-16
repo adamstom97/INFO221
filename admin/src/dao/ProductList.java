@@ -19,7 +19,7 @@ import java.util.TreeSet;
  * @author adath325
  * @version 1.0
  */
-public class ProductList implements DAO {
+public class ProductList implements Dao {
     
     /**
      * A list of the products offered for sale at the shop. Constructed as each 
@@ -56,6 +56,7 @@ public class ProductList implements DAO {
     @Override
     public void deleteProduct(Product product) {
         products.remove(product);
+        productsByID.remove(product.getProductID().toString());
     }
           
     @Override

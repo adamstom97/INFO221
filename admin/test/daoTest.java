@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-import dao.DAO;
 import dao.ProductDB;
+import dao.ProductList;
 import domain.Product;
 import java.util.Collection;
 import org.junit.After;
@@ -14,18 +14,20 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import dao.Dao;
 
 /**
  *
  * @author adath325
  */
 public class daoTest {
-    DAO list = new ProductDB();
+    Dao list;
     private Product product1;
     private Product product2;
     private Product product3;
     
     public daoTest() {
+        this.list = new ProductDB("jdbc:h2:tcp://localhost:9097/project-testing;IFEXISTS=TRUE");
     }
     
     @BeforeClass
