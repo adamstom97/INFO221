@@ -16,7 +16,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
     dao.daoTest.class,
-    gui.entryTest.class})
+    gui.entryTest.class,
+    gui.displayTest.class})
 public class AllTests {
 
     @Before

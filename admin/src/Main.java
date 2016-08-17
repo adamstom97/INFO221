@@ -6,6 +6,7 @@
 import dao.ProductDB;
 import gui.MainMenu;
 import dao.Dao;
+import dao.ProductList;
 
 /**
  * A Main class from which to run the entire admin project.

@@ -57,6 +57,11 @@ public class ProductList implements Dao {
     public void deleteProduct(Product product) {
         products.remove(product);
         productsByID.remove(product.getProductID().toString());
+        productsByCategory.get(product.getCategory()).remove(product);
+        if (productsByCategory.get(product.getCategory()).isEmpty()) {
+            productsByCategory.remove(product.getCategory());
+            categories.remove(product.getCategory());
+        }
     }
           
     @Override

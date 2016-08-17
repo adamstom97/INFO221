@@ -6,7 +6,6 @@
 package gui;
 
 import dao.Dao;
-import dao.ProductList;
 import domain.Product;
 import java.util.Collection;
 import java.util.TreeSet;
@@ -27,7 +26,6 @@ import static org.mockito.Mockito.verify;
  * @author Adams
  */
 public class entryTest {
-
     private Dao list;
     private DialogFixture fixture;
     private Robot robot;

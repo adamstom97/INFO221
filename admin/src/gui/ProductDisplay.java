@@ -8,6 +8,8 @@ import domain.Product;
 import gui.helpers.SimpleListModel;
 import javax.swing.JOptionPane;
 import dao.Dao;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A graphical user interface class for displaying all the products offered for
@@ -20,6 +22,7 @@ public class ProductDisplay extends javax.swing.JDialog {
     Dao list;
     SimpleListModel productsForDisplay = new SimpleListModel();
     SimpleListModel categoriesForDisplay = new SimpleListModel();
+    Set<String> categoriesAll = new HashSet<>();
     
     /**
      * Creates new form ProductDisplay
@@ -32,12 +35,18 @@ public class ProductDisplay extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.list = list;
+        
+        this.categoriesAll.add("All");
+        for (String c: list.getCategoryList()) {
+            categoriesAll.add(c);
+        }
                
         productsForDisplay.updateItems(list.getProductList());
         lstDisplay.setModel(productsForDisplay);  
         
-        categoriesForDisplay.updateItems(list.getCategoryList());
+        categoriesForDisplay.updateItems(categoriesAll);
         boxCategoryFilter.setModel(categoriesForDisplay);
+        boxCategoryFilter.setSelectedItem("All");
     }
 
     /**
@@ -62,6 +71,7 @@ public class ProductDisplay extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        lstDisplay.setName("lstDisplay"); // NOI18N
         pneDisplay.setViewportView(lstDisplay);
 
         btnExit.setText("Exit");
@@ -72,6 +82,7 @@ public class ProductDisplay extends javax.swing.JDialog {
         });
 
         btnEdit.setText("Edit");
+        btnEdit.setName("btnEdit"); // NOI18N
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
@@ -79,6 +90,7 @@ public class ProductDisplay extends javax.swing.JDialog {
         });
 
         btnDelete.setText("Delete");
+        btnDelete.setName("btnDelete"); // NOI18N
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -89,7 +101,10 @@ public class ProductDisplay extends javax.swing.JDialog {
 
         lblCategoryFilter.setText("Category Filter:");
 
+        txtSearchID.setName("txtSearchID"); // NOI18N
+
         btnSearchID.setText("Search");
+        btnSearchID.setName("btnSearchID"); // NOI18N
         btnSearchID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchIDActionPerformed(evt);
@@ -97,6 +112,7 @@ public class ProductDisplay extends javax.swing.JDialog {
         });
 
         boxCategoryFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxCategoryFilter.setName("boxCategoryFilter"); // NOI18N
         boxCategoryFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxCategoryFilterActionPerformed(evt);
@@ -173,7 +189,13 @@ public class ProductDisplay extends javax.swing.JDialog {
                 productsForDisplay.updateItems(list.getProductList());
                 lstDisplay.setModel(productsForDisplay);
                 
-                categoriesForDisplay.updateItems(list.getCategoryList());
+                categoriesAll.clear();
+                categoriesAll.add("All");
+                for (String c: list.getCategoryList()) {
+                    categoriesAll.add(c);
+                }
+                
+                categoriesForDisplay.updateItems(categoriesAll);
                 boxCategoryFilter.setModel(categoriesForDisplay);
             }
         }
@@ -193,7 +215,13 @@ public class ProductDisplay extends javax.swing.JDialog {
             productsForDisplay.updateItems(list.getProductList());
             lstDisplay.setModel(productsForDisplay);
             
-            categoriesForDisplay.updateItems(list.getCategoryList());
+            categoriesAll.clear();
+            categoriesAll.add("All");
+            for (String c: list.getCategoryList()) {
+                categoriesAll.add(c);
+            }
+                
+            categoriesForDisplay.updateItems(categoriesAll);
             boxCategoryFilter.setModel(categoriesForDisplay);
         }
     }//GEN-LAST:event_btnEditActionPerformed
@@ -216,12 +244,16 @@ public class ProductDisplay extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSearchIDActionPerformed
 
     private void boxCategoryFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxCategoryFilterActionPerformed
-        if (boxCategoryFilter.getSelectedItem() != null){
+        if (boxCategoryFilter.getSelectedItem() == "All") {
+            productsForDisplay.updateItems(list.getProductList());
+            lstDisplay.setModel(productsForDisplay);
+            enableButtons();
+        } else if (boxCategoryFilter.getSelectedItem() != null){
             productsForDisplay.updateItems(list.getProductsByCategory( 
                     boxCategoryFilter.getSelectedItem().toString()));
             lstDisplay.setModel(productsForDisplay);
             enableButtons();
-        }           
+        }
     }
     
     private void enableButtons() {

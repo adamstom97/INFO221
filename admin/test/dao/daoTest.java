@@ -6,16 +6,14 @@ package dao;
  * and open the template in the editor.
  */
 
-import dao.ProductDB;
-import dao.ProductList;
 import domain.Product;
 import java.util.Collection;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import dao.Dao;
 import java.util.Arrays;
+import java.util.Set;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -29,6 +27,8 @@ public class daoTest {
     private Product product1;
     private Product product2;
     private Product product3;
+    private Product product4;
+    private Product retrieved;
     
     @Parameterized.Parameters
         public static Collection<?> daoObjectsToTest() {
@@ -62,21 +62,21 @@ public class daoTest {
     }
 
     @Test
-    public void testAddAndDelete() {      
-        Product saved = new Product(4, "D", "dd", "b", 1.00, 1);
-        list.addProduct(saved);
-        Product retrieved = list.getProductByID("4");
+    public void testAddProductAndDeleteProduct() {      
+        product4 = new Product(4, "D", "dd", "b", 1.00, 1);
+        list.addProduct(product4);
+        retrieved = list.getProductByID("4");
         
         assertEquals("Retrieved product should be the same as the saved one",
-        saved, retrieved);
-        
-        list.deleteProduct(saved);    
+        product4, retrieved);
+    
+        list.deleteProduct(product4);    
         retrieved = list.getProductByID("4");
         assertNull("Product should no longer exist", retrieved);
     }
     
     @Test
-    public void testDAOGetAllProducts() {     
+    public void testGetProductList() {     
         Collection<Product> products = list.getProductList();
         assertTrue("product1 should exist", products.contains(product1));
         assertTrue("product2 should exist", products.contains(product2));
@@ -97,7 +97,16 @@ public class daoTest {
     }
     
     @Test
-    public void testDaoFindById() {
+    public void testGetCategoryList() {     
+        Collection<String> categories = list.getCategoryList();
+        assertTrue("Category a should exist", categories.contains("a"));
+        assertTrue("Category b should exist", categories.contains("b"));
+        
+        assertEquals("Only 2 categories in result", 2, categories.size());
+    }
+    
+    @Test
+    public void testGetProductByID() {
         Product p = list.getProductByID("1");
         assertEquals(product1, p);
         assertEquals(product1.getProductID(), p.getProductID());
@@ -109,5 +118,24 @@ public class daoTest {
         
         Product p2 = list.getProductByID("5");
         assertEquals(p2, null);
+    }
+    
+    @Test
+    public void testGetProductsByCategory() {
+        Set<Product> p = list.getProductsByCategory("a");
+        
+        assertTrue("Category a should contain product1", p.contains(product1));
+        assertTrue("Category a should contain product3", p.contains(product3));
+        
+        assertEquals("Only 2 products in result", 2, p.size());
+    }
+    
+    @Test
+    public void testEdit() {
+        product1.setName("E");
+        list.addProduct(product1);
+        retrieved = list.getProductByID("1");
+        
+        assertEquals("product1 should now be called E", "E", retrieved.getName());
     }
 }

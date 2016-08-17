@@ -87,6 +87,7 @@ public class ProductEntry extends javax.swing.JDialog {
         lblTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setName("entryDialog"); // NOI18N
 
         lblID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblID.setText("ID:");

@@ -87,6 +87,9 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
         <Component class="javax.swing.JList" name="lstDisplay">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="lstDisplay" noResource="true"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Product&gt;"/>
           </AuxValues>
@@ -104,6 +107,7 @@
     <Component class="javax.swing.JButton" name="btnEdit">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit"/>
+        <Property name="name" type="java.lang.String" value="btnEdit" noResource="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>
@@ -112,6 +116,7 @@
     <Component class="javax.swing.JButton" name="btnDelete">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete"/>
+        <Property name="name" type="java.lang.String" value="btnDelete" noResource="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
@@ -128,10 +133,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSearchID">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtSearchID" noResource="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSearchID">
       <Properties>
         <Property name="text" type="java.lang.String" value="Search"/>
+        <Property name="name" type="java.lang.String" value="btnSearchID" noResource="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchIDActionPerformed"/>
@@ -147,6 +156,7 @@
             <StringItem index="3" value="Item 4"/>
           </StringArray>
         </Property>
+        <Property name="name" type="java.lang.String" value="boxCategoryFilter" noResource="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boxCategoryFilterActionPerformed"/>
