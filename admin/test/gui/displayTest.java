@@ -9,9 +9,8 @@ import dao.Dao;
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.SortedMap;
-import java.util.TreeMap;
 import java.util.TreeSet;
 import org.assertj.swing.core.BasicRobot;
 import org.assertj.swing.core.Robot;
@@ -30,15 +29,15 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
 /**
- *
- * @author Adams
+ * A class for testing the project's ProductDisplay gui.
+ * 
+ * @author adamstom97
+ * @version 2.0
  */
 public class displayTest {
-
     private Dao list;
     private DialogFixture fixture;
     private Robot robot;
-
     private Product product1;
     private Product product2;
 
@@ -58,20 +57,9 @@ public class displayTest {
         categories.add("a");
         categories.add("b");
 
-        SortedMap<String, Product> productsByID = new TreeMap<>();
-        productsByID.put("1", product1);
-
-        SortedMap<String, Set<Product>> productsByCategory = new TreeMap<>();
-        Set<Product> productsByCategoryInner = new TreeSet<>();
-        productsByCategoryInner.add(product2);
-        productsByCategory.put("b", productsByCategoryInner);
-
         list = mock(Dao.class);
-
         when(list.getProductList()).thenReturn(products);
         when(list.getCategoryList()).thenReturn(categories);
-        when(list.getProductByID("1")).thenReturn(productsByID.get("1"));
-        when(list.getProductsByCategory("b")).thenReturn(productsByCategory.get("b"));
 
         Mockito.doAnswer(new Answer<Void>() {
             @Override
@@ -80,89 +68,117 @@ public class displayTest {
                 return null;
             }
         }).when(list).deleteProduct(product1);
-    }
-
-    @After
-    public void tearDown() {
-        fixture.cleanUp();
+        
+        Mockito.doAnswer(new Answer<Product>() {
+            @Override
+            public Product answer(InvocationOnMock invocation) throws 
+                    Throwable {
+                return product1;
+            }
+        }).when(list).getProductByID("1");
+        
+        Mockito.doAnswer(new Answer<Set <Product>>() {
+            @Override
+            public Set<Product> answer(InvocationOnMock invocation) throws 
+                    Throwable {
+                Set<Product> products = new HashSet<>();
+                products.add(product2);
+                return products;
+            }
+        }).when(list).getProductsByCategory("b");
     }
 
     @Test
     public void testDisplay() {
         ProductDisplay dialog = new ProductDisplay(null, true, list);
-
         fixture = new DialogFixture(robot, dialog);
         fixture.show().requireVisible();
 
-        SimpleListModel model = (SimpleListModel) fixture.list("lstDisplay").target().getModel();
+        SimpleListModel model = (SimpleListModel) fixture.list("lstDisplay").
+                target().getModel();
 
-        assertTrue("Ensure list contains the correct product", model.contains(product1));
-        assertTrue("Ensure list contains the correct product", model.contains(product2));
-        assertEquals("Ensure list only contains the correct products", 2, model.getSize());
+        assertEquals("Ensure categories is set to All", "All", 
+                fixture.comboBox("boxCategoryFilter").selectedItem());
+        assertTrue("Ensure list contains the correct product", 
+                model.contains(product1));
+        assertTrue("Ensure list contains the correct product", 
+                model.contains(product2));
+        assertEquals("Ensure list only contains the correct products", 2, 
+                model.getSize());
     }
 
     @Test
     public void testDeleteButton() {
         ProductDisplay dialog = new ProductDisplay(null, true, list);
-
         fixture = new DialogFixture(robot, dialog);
         fixture.show().requireVisible();
 
         fixture.list("lstDisplay").selectItem("A");
         fixture.button("btnDelete").click();
-
-        DialogFixture confirmDialog = fixture.dialog(withTitle("Select an Option").andShowing()).requireVisible();
+        DialogFixture confirmDialog = fixture.dialog(
+                withTitle("Select an Option").andShowing()).requireVisible();
         confirmDialog.button(withText("Yes")).click();
 
-        SimpleListModel model = (SimpleListModel) fixture.list("lstDisplay").target().getModel();
+        SimpleListModel model = (SimpleListModel) fixture.list("lstDisplay").
+                target().getModel();
 
-        assertEquals("Ensure list only contains the correct products", 1, model.getSize());
-        assertTrue("Ensure list contains the correct product", model.contains(product2));
+        assertEquals("Ensure list only contains the correct products", 1, 
+                model.getSize());
+        assertTrue("Ensure list contains the correct product", 
+                model.contains(product2));
     }
 
     @Test
     public void testEditButton() {
         ProductDisplay dialog = new ProductDisplay(null, true, list);
-
         fixture = new DialogFixture(robot, dialog);
         fixture.show().requireVisible();
 
         fixture.list("lstDisplay").selectItem("A");
         fixture.button("btnEdit").click();
-
         DialogFixture editDialog = fixture.dialog("entryDialog");
 
-        assertEquals("Ensure dialog contains the correct product", "1", editDialog.textBox("txtID").text());
+        assertEquals("Ensure dialog contains the correct product", "1", 
+                editDialog.textBox("txtID").text());
     }
 
     @Test
     public void testSearchIDButton() {
         ProductDisplay dialog = new ProductDisplay(null, true, list);
-
         fixture = new DialogFixture(robot, dialog);
         fixture.show().requireVisible();
 
         fixture.textBox("txtSearchID").enterText("1");
         fixture.button("btnSearchID").click();
 
-        SimpleListModel model = (SimpleListModel) fixture.list("lstDisplay").target().getModel();
+        SimpleListModel model = (SimpleListModel) fixture.list("lstDisplay").
+                target().getModel();
 
-        assertTrue("Ensure list contains the correct product", model.contains(product1));
-        assertEquals("Ensure list only contains the correct products", 1, model.getSize());
+        assertTrue("Ensure list contains the correct product", 
+                model.contains(product1));
+        assertEquals("Ensure list only contains the correct products", 1, 
+                model.getSize());
     }
 
     @Test
     public void testCategoryFilter() {
         ProductDisplay dialog = new ProductDisplay(null, true, list);
-
         fixture = new DialogFixture(robot, dialog);
         fixture.show().requireVisible();
 
         fixture.comboBox("boxCategoryFilter").selectItem("b");
 
-        SimpleListModel model = (SimpleListModel) fixture.list("lstDisplay").target().getModel();
+        SimpleListModel model = (SimpleListModel) fixture.list("lstDisplay").
+                target().getModel();
 
-        assertTrue("Ensure list contains the correct product", model.contains(product2));
-        assertEquals("Ensure list only contains the correct products", 1, model.getSize());
+        assertTrue("Ensure list contains the correct product", 
+                model.contains(product2));
+        assertEquals("Ensure list only contains the correct products", 1, 
+                model.getSize());
+    }
+    
+    @After
+    public void tearDown() {
+        fixture.cleanUp();
     }
 }

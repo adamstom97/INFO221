@@ -10,17 +10,19 @@ import java.sql.SQLException;
 import org.h2.jdbcx.JdbcConnectionPool;
 
 /**
- *
+ * The connection to the h2 system for the JDBC dao class (ProductDB).
+ * 
  * @author adath325
+ * @version 2.0
  */
 public class JdbcConnection {
-    private static final String username = "sa"; // H2 default
-    private static final String password = ""; // H2 default
+    private static final String USERNAME = "sa";
+    private static final String PASSWORD = "";
     private static JdbcConnectionPool pool;
 
     public static Connection getConnection(String url) {
         if (pool == null) {
-            pool = JdbcConnectionPool.create(url, username, password);
+            pool = JdbcConnectionPool.create(url, USERNAME, PASSWORD);
         }
         try {
             return pool.getConnection();

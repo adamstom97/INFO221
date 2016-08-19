@@ -16,15 +16,25 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- *
+ * A dao class connected to the h2 database system.
+ * 
  * @author adath325
+ * @version 2.0
  */
 public class ProductDB implements Dao {
     private String url = "jdbc:h2:tcp://localhost:9097/project;IFEXISTS=TRUE";
 
+    /**
+     * A default constructor for when the normal database is required.
+     */
     public ProductDB() {
     }
 
+    /**
+     * A second constructor for when a different database is required.
+     * 
+     * @param url   the url of the requested database
+     */
     public ProductDB(String url) {
         this.url = url;
     }

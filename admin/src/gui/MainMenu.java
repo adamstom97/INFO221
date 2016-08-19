@@ -12,14 +12,15 @@ import dao.Dao;
  * system, including buttons to ope the ProductEntry and ProductDisplay dialogs.
  * 
  * @author adath325
- * @version 1.0
+ * @version 2.0
  */
 public class MainMenu extends javax.swing.JFrame {
     Dao list;
 
     /**
      * Creates new form MainMenu
-     * @param list
+     * 
+     * @param list  the dao class that the system is going to use
      */
     public MainMenu(Dao list) {
         initComponents();

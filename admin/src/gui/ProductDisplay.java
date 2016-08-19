@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
+
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import javax.swing.JOptionPane;
@@ -16,7 +17,7 @@ import java.util.Set;
  * sale at the shop. The products are taken from the list stored in ProductList.
  * 
  * @author adath325
- * @version 1.0
+ * @version 2.0
  */
 public class ProductDisplay extends javax.swing.JDialog {
     Dao list;
@@ -29,7 +30,7 @@ public class ProductDisplay extends javax.swing.JDialog {
      * 
      * @param parent the jFrame that the form is created from
      * @param modal  controls whether the form blocks access to its parent
-     * @param list
+     * @param list   the dao class that the system is using
      */
     public ProductDisplay(java.awt.Frame parent, boolean modal, Dao list) {
         super(parent, modal);
@@ -181,8 +182,8 @@ public class ProductDisplay extends javax.swing.JDialog {
                     + "delete.", "No Product Selected",
                     JOptionPane.ERROR_MESSAGE);
         } else {
-            int result = JOptionPane.showConfirmDialog(this, "Are you sure you "
-                    + "want to delete this product?");
+            int result = JOptionPane.showConfirmDialog(this, "Are you sure you"
+                    + " want to delete this product?");
             if (result == JOptionPane.YES_OPTION) {
                 list.deleteProduct(lstDisplay.getSelectedValue());
                 
@@ -197,6 +198,7 @@ public class ProductDisplay extends javax.swing.JDialog {
                 
                 categoriesForDisplay.updateItems(categoriesAll);
                 boxCategoryFilter.setModel(categoriesForDisplay);
+                boxCategoryFilter.setSelectedItem("All");
             }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
@@ -237,7 +239,8 @@ public class ProductDisplay extends javax.swing.JDialog {
             btnEdit.setEnabled(false);
             btnDelete.setEnabled(false);
         } else {
-            productsForDisplay.updateItems(list.getProductByID(txtSearchID.getText()));
+            productsForDisplay.updateItems(list.getProductByID(
+                    txtSearchID.getText()));
             lstDisplay.setModel(productsForDisplay);
             enableButtons();
         }

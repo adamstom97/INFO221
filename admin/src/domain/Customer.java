@@ -10,7 +10,7 @@ package domain;
  * the shop.
  * 
  * @author adath325
- * @version 1.0
+ * @version 2.0
  */
 public class Customer {
     private String userName;

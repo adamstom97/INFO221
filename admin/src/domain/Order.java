@@ -14,7 +14,7 @@ import java.util.Date;
  * many, that they are purchasing.
  * 
  * @author adath325
- * @version 1.0
+ * @version 2.0
  */
 public class Order {
     private int orderID;

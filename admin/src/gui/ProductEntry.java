@@ -18,7 +18,7 @@ import dao.Dao;
  * ProductList to be stored.
  *
  * @author adath325
- * @version 1.0
+ * @version 2.0
  */
 public class ProductEntry extends javax.swing.JDialog {
 
@@ -29,9 +29,9 @@ public class ProductEntry extends javax.swing.JDialog {
     /**
      * Creates new form ProductEntry
      *
-     * @param parent the jFrame that the form is created from
+     * @param parent the parent window that the form is created from
      * @param modal controls whether the form blocks access to its parent
-     * @param list
+     * @param list  the dao class that the system is using
      */
     public ProductEntry(Window parent, boolean modal, Dao list) {
         super(parent);
@@ -45,6 +45,14 @@ public class ProductEntry extends javax.swing.JDialog {
         boxCategory.setModel(productsForDisplay);
     }
 
+    /**
+     * Creates new for ProductEntry to edit an existing product
+     * 
+     * @param parent    the parent window that the form is created from
+     * @param modal     controls whether the form blocks access to its parent
+     * @param list      the dao class that the system is using
+     * @param product   the product chosen to be edited
+     */
     public ProductEntry(Window parent, boolean modal, Dao list, Product product) 
     {
         this(parent, modal, list);

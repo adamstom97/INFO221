@@ -12,7 +12,7 @@ import java.util.Objects;
  * sale at the shop. 
  * 
  * @author adath325
- * @version 1.0
+ * @version 2.0
  */
 public class Product implements Comparable<Product>{
     private Integer productID;
@@ -27,6 +27,16 @@ public class Product implements Comparable<Product>{
      */
     public Product() {}
 
+    /**
+     * A constructor that sets all the product's information.
+     * 
+     * @param productID     the product's unique ID number
+     * @param name          the product's name
+     * @param description   a description of the product
+     * @param category      the category that the product is in
+     * @param price         the standard price of the product
+     * @param quantity      the quantity of the product available
+     */
     public Product(Integer productID, String name, String description, 
             String category, Double price, Integer quantity) {
         this.productID = productID;
@@ -68,10 +78,7 @@ public class Product implements Comparable<Product>{
             return false;
         }
         final Product other = (Product) obj;
-        if (!Objects.equals(this.productID, other.productID)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.productID, other.productID);
     }
 
     /**
@@ -80,7 +87,10 @@ public class Product implements Comparable<Product>{
     public Integer getProductID() {
         return productID;
     }
-
+    
+    /**
+     * @param productID     {@link Product#productID}
+     */
     public void setProductID(Integer productID) {
         this.productID = productID;
     }

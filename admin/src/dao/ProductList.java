@@ -17,7 +17,7 @@ import java.util.TreeSet;
  * sale at the shop, so they can be displayed to the user from ProductDisplay.
  * 
  * @author adath325
- * @version 1.0
+ * @version 2.0
  */
 public class ProductList implements Dao {
     
@@ -45,7 +45,8 @@ public class ProductList implements Dao {
             categories.add(product.getCategory());
             Set<Product> productsByCategoryInner = new TreeSet<>();
             productsByCategoryInner.add(product);
-            productsByCategory.put(product.getCategory(), productsByCategoryInner);
+            productsByCategory.put(product.getCategory(), 
+                    productsByCategoryInner);
         } else {
             Set<Product> productsByCategoryInner = 
                     productsByCategory.get(product.getCategory());

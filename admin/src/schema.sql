@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/**
- * Author:  adath325
- * Created: 9/08/2016
- */
 
+/**
+ * The schema for setting up a new database for the project with sql
+ * 
+ * @author adath325
+ * @version 2.0
+ */
 create table products (
     productID integer not null,
     name varchar not null,

@@ -10,16 +10,15 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
- *
- * @author Adams
+ * A class to call all the project's test classes at once.
+ * 
+ * @author adamstom97
+ * @version 2.0
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({
-    dao.daoTest.class,
-    gui.entryTest.class,
+@Suite.SuiteClasses({dao.daoTest.class, gui.entryTest.class, 
     gui.displayTest.class})
 public class AllTests {
-
     @Before
     public void setUp() throws Exception {
     }
@@ -27,5 +26,4 @@ public class AllTests {
     @After
     public void tearDown() throws Exception {
     }
-    
 }
