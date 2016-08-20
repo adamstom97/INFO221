@@ -138,8 +138,7 @@ public class displayTest {
         fixture.button("btnEdit").click();
         DialogFixture editDialog = fixture.dialog("entryDialog");
 
-        assertEquals("Ensure dialog contains the correct product", "1", 
-                editDialog.textBox("txtID").text());
+        editDialog.textBox("txtID").requireText("1");
     }
 
     @Test
@@ -156,6 +155,17 @@ public class displayTest {
 
         assertTrue("Ensure list contains the correct product", 
                 model.contains(product1));
+        assertEquals("Ensure list only contains the correct products", 1, 
+                model.getSize());
+        
+        fixture.textBox("txtSearchID").enterText("3");
+        fixture.button("btnSearchID").click();
+        
+        model = (SimpleListModel) fixture.list("lstDisplay").
+                target().getModel();
+        
+        assertEquals("Ensure list contains the correct product", "There is no "
+                + "product with that ID.", model.getElementAt(0).toString());
         assertEquals("Ensure list only contains the correct products", 1, 
                 model.getSize());
     }

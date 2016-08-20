@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -18,12 +16,4 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({dao.daoTest.class, gui.entryTest.class, 
     gui.displayTest.class})
-public class AllTests {
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
-}
+public class AllTests {}

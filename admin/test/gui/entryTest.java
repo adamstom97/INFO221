@@ -89,6 +89,7 @@ public class entryTest {
         fixture.comboBox("boxCategory").requireSelection("b");
         fixture.textBox("txtPrice").requireText("1.0");
         fixture.textBox("txtQuantity").requireText("1");
+        
         fixture.textBox("txtName").selectAll().deleteText().enterText("C");
         fixture.comboBox("boxCategory").selectItem("a");
         fixture.button("btnSave").click();
