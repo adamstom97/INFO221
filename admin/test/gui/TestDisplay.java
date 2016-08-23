@@ -46,8 +46,8 @@ public class TestDisplay {
         robot = BasicRobot.robotWithNewAwtHierarchy();
         robot.settings().delayBetweenEvents(75);
 
-        this.product1 = new Product(1, "A", "aa", "a", 1.00, 1);
-        this.product2 = new Product(2, "B", "bb", "b", 1.00, 1);
+        this.product1 = new Product(1, "Aa", "Aa", "a", 1.00, 1);
+        this.product2 = new Product(2, "Bb", "Bb", "b", 1.00, 1);
 
         Collection<Product> products = new TreeSet<>();
         products.add(product1);
@@ -100,7 +100,7 @@ public class TestDisplay {
         fixture = new DialogFixture(robot, dialog);
         fixture.show().requireVisible();
 
-        fixture.list("lstDisplay").selectItem("A");
+        fixture.list("lstDisplay").selectItem("Aa");
         fixture.button("btnDelete").click();
         DialogFixture confirmDialog = fixture.dialog(
                 withTitle("Select an Option").andShowing()).requireVisible();
@@ -116,7 +116,7 @@ public class TestDisplay {
         assertTrue("Ensure list contains the correct product", 
                 model.contains(product2));
         
-        fixture.list("lstDisplay").selectItem("A");
+        fixture.list("lstDisplay").selectItem("Aa");
         fixture.button("btnDelete").click();
         confirmDialog = fixture.dialog(
                 withTitle("Select an Option").andShowing()).requireVisible();
@@ -137,7 +137,7 @@ public class TestDisplay {
         fixture = new DialogFixture(robot, dialog);
         fixture.show().requireVisible();
 
-        fixture.list("lstDisplay").selectItem("A");
+        fixture.list("lstDisplay").selectItem("Aa");
         fixture.button("btnEdit").click();
         DialogFixture editDialog = fixture.dialog("entryDialog");
 

@@ -10,6 +10,7 @@ import gui.helpers.SimpleListModel;
 import java.awt.Window;
 import javax.swing.JOptionPane;
 import dao.Dao;
+import gui.helpers.ValidationHelper;
 
 /**
  * A graphical user interface class for creating and saving a new product to be
@@ -25,13 +26,14 @@ public class ProductEntry extends javax.swing.JDialog {
     Dao list;
     SimpleListModel productsForDisplay = new SimpleListModel();
     Product product = new Product();
+    ValidationHelper vHelper = new ValidationHelper();
 
     /**
      * Creates new form ProductEntry
      *
      * @param parent the parent window that the form is created from
      * @param modal controls whether the form blocks access to its parent
-     * @param list  the dao class that the system is using
+     * @param list the dao class that the system is using
      */
     public ProductEntry(Window parent, boolean modal, Dao list) {
         super(parent);
@@ -43,26 +45,29 @@ public class ProductEntry extends javax.swing.JDialog {
 
         productsForDisplay.updateItems(list.getCategoryList());
         boxCategory.setModel(productsForDisplay);
+
+        vHelper.addTypeFormatter(txtID, "#0", Integer.class);
+        vHelper.addTypeFormatter(txtPrice, "#0.00", Double.class);
+        vHelper.addTypeFormatter(txtQuantity, "#0", Integer.class);
     }
 
     /**
      * Creates new for ProductEntry to edit an existing product
-     * 
-     * @param parent    the parent window that the form is created from
-     * @param modal     controls whether the form blocks access to its parent
-     * @param list      the dao class that the system is using
-     * @param product   the product chosen to be edited
+     *
+     * @param parent the parent window that the form is created from
+     * @param modal controls whether the form blocks access to its parent
+     * @param list the dao class that the system is using
+     * @param product the product chosen to be edited
      */
-    public ProductEntry(Window parent, boolean modal, Dao list, Product product) 
-    {
+    public ProductEntry(Window parent, boolean modal, Dao list, Product product) {
         this(parent, modal, list);
         this.product = product;
 
-        txtID.setText(product.getProductID().toString());
+        txtID.setValue(product.getProductID());
         txtName.setText(product.getName());
         txtDescription.setText(product.getDescription());
-        txtPrice.setText(product.getPrice().toString());
-        txtQuantity.setText(product.getQuantity().toString());
+        txtPrice.setValue(product.getPrice());
+        txtQuantity.setValue(product.getQuantity());
         boxCategory.setSelectedItem(product.getCategory());
 
         txtID.setEditable(false);
@@ -78,7 +83,6 @@ public class ProductEntry extends javax.swing.JDialog {
     private void initComponents() {
 
         lblID = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
         lblName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         lblDescription = new javax.swing.JLabel();
@@ -87,20 +91,19 @@ public class ProductEntry extends javax.swing.JDialog {
         lblCategory = new javax.swing.JLabel();
         boxCategory = new javax.swing.JComboBox<>();
         lblPrice = new javax.swing.JLabel();
-        txtPrice = new javax.swing.JTextField();
         lblQuantity = new javax.swing.JLabel();
-        txtQuantity = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        txtID = new javax.swing.JFormattedTextField();
+        txtPrice = new javax.swing.JFormattedTextField();
+        txtQuantity = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("entryDialog"); // NOI18N
 
         lblID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblID.setText("ID:");
-
-        txtID.setName("txtID"); // NOI18N
 
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblName.setText("Name:");
@@ -124,12 +127,8 @@ public class ProductEntry extends javax.swing.JDialog {
         lblPrice.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPrice.setText("Price:");
 
-        txtPrice.setName("txtPrice"); // NOI18N
-
         lblQuantity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblQuantity.setText("Quantity in Stock:");
-
-        txtQuantity.setName("txtQuantity"); // NOI18N
 
         btnSave.setText("Save");
         btnSave.setName("btnSave"); // NOI18N
@@ -150,6 +149,12 @@ public class ProductEntry extends javax.swing.JDialog {
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Product Entry");
+
+        txtID.setName("txtID"); // NOI18N
+
+        txtPrice.setName("txtPrice"); // NOI18N
+
+        txtQuantity.setName("txtQuantity"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,12 +178,12 @@ public class ProductEntry extends javax.swing.JDialog {
                             .addComponent(lblDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID)
                             .addComponent(txtName)
                             .addComponent(pneDescription)
+                            .addComponent(boxCategory, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtID)
                             .addComponent(txtPrice)
-                            .addComponent(txtQuantity)
-                            .addComponent(boxCategory, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(txtQuantity))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -189,7 +194,7 @@ public class ProductEntry extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblID)
-                    .addComponent(txtID))
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtName)
@@ -222,23 +227,25 @@ public class ProductEntry extends javax.swing.JDialog {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if (txtID.isEditable()) {
-            if (list.getProductByID(txtID.getText()) != null){
+            if (list.getProductByID(txtID.getText()) != null) {
                 JOptionPane.showMessageDialog(this, "There is already a product"
                         + " with that ID.", "ID Already Exists",
-                    JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            product.setProductID(Integer.parseInt(txtID.getText()));
+            product.setProductID((Integer) txtID.getValue());
         }
 
         product.setName(txtName.getText());
         product.setDescription(txtDescription.getText());
         product.setCategory((String) boxCategory.getSelectedItem());
-        product.setPrice(Double.parseDouble(txtPrice.getText()));
-        product.setQuantity(Integer.parseInt(txtQuantity.getText()));
-        
-        list.addProduct(product);
-         dispose();
+        product.setPrice((Double) txtPrice.getValue());
+        product.setQuantity((Integer) txtQuantity.getValue());
+
+        if (vHelper.isObjectValid(product)) {
+            list.addProduct(product);
+            dispose();
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -258,9 +265,9 @@ public class ProductEntry extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JScrollPane pneDescription;
     private javax.swing.JTextArea txtDescription;
-    private javax.swing.JTextField txtID;
+    private javax.swing.JFormattedTextField txtID;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPrice;
-    private javax.swing.JTextField txtQuantity;
+    private javax.swing.JFormattedTextField txtPrice;
+    private javax.swing.JFormattedTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
 }

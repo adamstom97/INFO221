@@ -6,6 +6,10 @@
 package domain;
 
 import java.util.Objects;
+import net.sf.oval.constraint.Length;
+import net.sf.oval.constraint.NotBlank;
+import net.sf.oval.constraint.NotNegative;
+import net.sf.oval.constraint.NotNull;
 
 /**
  * A class containing all the information on a single product offered for
@@ -16,10 +20,19 @@ import java.util.Objects;
  */
 public class Product implements Comparable<Product>{
     private Integer productID;
+    
+    @NotNull(message = "Name must be provided.")
+    @NotBlank(message = "Name must be provided.")
+    @Length(min=2, message="Name must contain at least two characters.")
     private String name;
+    
     private String description;
     private String category;
+    
+    @NotNull(message = "Price must be provided.")
+    @NotNegative(message = "Price must be a positive number.")
     private Double price;
+    
     private Integer quantity;
 
     /**

@@ -44,12 +44,12 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtID" max="32767" attributes="0"/>
                           <Component id="txtName" max="32767" attributes="0"/>
                           <Component id="pneDescription" max="32767" attributes="0"/>
-                          <Component id="txtPrice" max="32767" attributes="0"/>
-                          <Component id="txtQuantity" max="32767" attributes="0"/>
                           <Component id="boxCategory" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txtID" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtPrice" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtQuantity" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -65,7 +65,7 @@
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblID" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtID" alignment="3" max="32767" attributes="0"/>
+                  <Component id="txtID" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -107,11 +107,6 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="ID:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtID">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="txtID" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblName">
@@ -172,20 +167,10 @@
         <Property name="text" type="java.lang.String" value="Price:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPrice">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="txtPrice" noResource="true"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblQuantity">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Quantity in Stock:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtQuantity">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="txtQuantity" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSave">
@@ -213,6 +198,21 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Product Entry"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtID">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtID" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtPrice">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtPrice" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtQuantity">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtQuantity" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

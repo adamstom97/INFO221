@@ -52,8 +52,8 @@ public class TestEntry {
         fixture.show().requireVisible();
 
         fixture.textBox("txtID").enterText("1");
-        fixture.textBox("txtName").enterText("A");
-        fixture.textBox("txtDescription").enterText("aa");
+        fixture.textBox("txtName").enterText("Aa");
+        fixture.textBox("txtDescription").enterText("Aa");
         fixture.comboBox("boxCategory").selectItem("a");
         fixture.textBox("txtPrice").enterText("1.00");
         fixture.textBox("txtQuantity").enterText("1");
@@ -66,8 +66,8 @@ public class TestEntry {
 
         assertEquals("Ensure the ID was saved", new Integer(1), 
                 saved.getProductID());
-        assertEquals("Ensure the name was saved", "A", saved.getName());
-        assertEquals("Ensure the Description was saved", "aa", 
+        assertEquals("Ensure the name was saved", "Aa", saved.getName());
+        assertEquals("Ensure the Description was saved", "Aa", 
                 saved.getDescription());
         assertEquals("Ensure the Category was saved", "a", saved.getCategory());
         assertEquals("Ensure the Price was saved", new Double(1.00), 
@@ -78,19 +78,19 @@ public class TestEntry {
 
     @Test
     public void testEdit() {
-        Product p = new Product(2, "B", "bb", "b", 1.00, 1);
+        Product p = new Product(2, "Bb", "Bb", "b", 1.00, 1);
         ProductEntry dialog = new ProductEntry(null, true, list, p);
         fixture = new DialogFixture(robot, dialog);
         fixture.show().requireVisible();
 
         fixture.textBox("txtID").requireText("2");
-        fixture.textBox("txtName").requireText("B");
-        fixture.textBox("txtDescription").requireText("bb");
+        fixture.textBox("txtName").requireText("Bb");
+        fixture.textBox("txtDescription").requireText("Bb");
         fixture.comboBox("boxCategory").requireSelection("b");
-        fixture.textBox("txtPrice").requireText("1.0");
+        fixture.textBox("txtPrice").requireText("1.00");
         fixture.textBox("txtQuantity").requireText("1");
         
-        fixture.textBox("txtName").selectAll().deleteText().enterText("C");
+        fixture.textBox("txtName").selectAll().deleteText().enterText("Cc");
         fixture.comboBox("boxCategory").selectItem("a");
         fixture.button("btnSave").click();
 
@@ -99,7 +99,7 @@ public class TestEntry {
         verify(list).addProduct(argument.capture());
         Product edited = argument.getValue();
 
-        assertEquals("Ensure the name was changed", "C", edited.getName());
+        assertEquals("Ensure the name was changed", "Cc", edited.getName());
         assertEquals("Ensure the category was changed", "a", 
                 edited.getCategory());
     }
