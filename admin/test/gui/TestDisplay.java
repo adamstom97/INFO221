@@ -56,10 +56,15 @@ public class TestDisplay {
         Collection<String> categories = new TreeSet<>();
         categories.add("a");
         categories.add("b");
+        
+        Set<Product> categoryFilter = new HashSet<>();
+        categoryFilter.add(product2);
 
         list = mock(Dao.class);
         when(list.getProductList()).thenReturn(products);
         when(list.getCategoryList()).thenReturn(categories);
+        when(list.getProductByID("1")).thenReturn(product1);
+        when(list.getProductsByCategory("b")).thenReturn(categoryFilter);
 
         Mockito.doAnswer(new Answer<Void>() {
             @Override
@@ -68,24 +73,6 @@ public class TestDisplay {
                 return null;
             }
         }).when(list).deleteProduct(product1);
-        
-        Mockito.doAnswer(new Answer<Product>() {
-            @Override
-            public Product answer(InvocationOnMock invocation) throws 
-                    Throwable {
-                return product1;
-            }
-        }).when(list).getProductByID("1");
-        
-        Mockito.doAnswer(new Answer<Set <Product>>() {
-            @Override
-            public Set<Product> answer(InvocationOnMock invocation) throws 
-                    Throwable {
-                Set<Product> products = new HashSet<>();
-                products.add(product2);
-                return products;
-            }
-        }).when(list).getProductsByCategory("b");
     }
 
     @Test
@@ -117,9 +104,25 @@ public class TestDisplay {
         fixture.button("btnDelete").click();
         DialogFixture confirmDialog = fixture.dialog(
                 withTitle("Select an Option").andShowing()).requireVisible();
-        confirmDialog.button(withText("Yes")).click();
+        confirmDialog.button(withText("No")).click();
 
         SimpleListModel model = (SimpleListModel) fixture.list("lstDisplay").
+                target().getModel();
+
+        assertEquals("Ensure list contains the correct products", 2, 
+                model.getSize());
+        assertTrue("Ensure list contains the correct product", 
+                model.contains(product1));
+        assertTrue("Ensure list contains the correct product", 
+                model.contains(product2));
+        
+        fixture.list("lstDisplay").selectItem("A");
+        fixture.button("btnDelete").click();
+        confirmDialog = fixture.dialog(
+                withTitle("Select an Option").andShowing()).requireVisible();
+        confirmDialog.button(withText("Yes")).click();
+
+        model = (SimpleListModel) fixture.list("lstDisplay").
                 target().getModel();
 
         assertEquals("Ensure list only contains the correct products", 1, 

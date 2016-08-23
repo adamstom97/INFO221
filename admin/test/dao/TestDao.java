@@ -24,6 +24,7 @@ import org.junit.runners.Parameterized;
  */
 @RunWith(Parameterized.class)
 public class TestDao {
+
     Dao list;
     private Product product1;
     private Product product2;
@@ -61,8 +62,24 @@ public class TestDao {
 
         list.addProduct(product4);
         retrieved = list.getProductByID("4");
+
         assertEquals("Retrieved product should be the same as the saved one",
                 product4, retrieved);
+        assertEquals("The product's ID should be the same as product4's", 
+                product4.getProductID(), retrieved.getProductID());
+        assertEquals("The product's name should be the same as "
+                + "product4's", product4.getName(), retrieved.getName());
+        assertEquals("The product's description should be the same as "
+                + "product4's", product4.getDescription(),
+                retrieved.getDescription());
+        assertEquals("The product's category should be the same as "
+                + "product4's", product4.getCategory(),
+                retrieved.getCategory());
+        assertEquals("The product's price should be the same as "
+                + "product4's", product4.getPrice(), retrieved.getPrice());
+        assertEquals("The product's quantity should be the same as "
+                + "product4's", product4.getQuantity(),
+                retrieved.getQuantity());
 
         list.deleteProduct(product4);
         retrieved = list.getProductByID("4");
@@ -115,15 +132,54 @@ public class TestDao {
 
         Product p2 = list.getProductByID("5");
         assertEquals("The product should not exist", p2, null);
+
+        assertEquals("The product's ID should be the same as product1's", 
+                product1.getProductID(), p.getProductID());
+        assertEquals("The product's name should be the same as "
+                + "product1's", product1.getName(), p.getName());
+        assertEquals("The product's description should be the same as "
+                + "product1's", product1.getDescription(),
+                p.getDescription());
+        assertEquals("The product's category should be the same as "
+                + "product1's", product1.getCategory(),
+                p.getCategory());
+        assertEquals("The product's price should be the same as "
+                + "product1's", product1.getPrice(), p.getPrice());
+        assertEquals("The product's quantity should be the same as "
+                + "product1's", product1.getQuantity(),
+                p.getQuantity());
     }
 
     @Test
     public void testGetProductsByCategory() {
-        Set<Product> p = list.getProductsByCategory("a");
+        Set<Product> products = list.getProductsByCategory("a");
 
-        assertTrue("Category a should contain product1", p.contains(product1));
-        assertTrue("Category a should contain product3", p.contains(product3));
-        assertEquals("Category a should only contain 2 products", 2, p.size());
+        assertTrue("Category a should contain product1", products.contains(
+                product1));
+        assertTrue("Category a should contain product3", products.contains(
+                product3));
+        assertEquals("Category a should only contain 2 products", 2, 
+                products.size());
+
+        for (Product p : products) {
+            if (p.equals(product1)) {
+                assertEquals("The product's ID should be the same as product1's"
+                        , product1.getProductID(), p.getProductID());
+                assertEquals("The product's name should be the same as "
+                        + "product1's", product1.getName(), p.getName());
+                assertEquals("The product's description should be the same as "
+                        + "product1's", product1.getDescription(),
+                        p.getDescription());
+                assertEquals("The product's category should be the same as "
+                        + "product1's", product1.getCategory(),
+                        p.getCategory());
+                assertEquals("The product's price should be the same as "
+                        + "product1's", product1.getPrice(), p.getPrice());
+                assertEquals("The product's quantity should be the same as "
+                        + "product1's", product1.getQuantity(),
+                        p.getQuantity());
+            }
+        }
     }
 
     @Test
