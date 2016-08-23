@@ -7,6 +7,7 @@ package domain;
 
 import java.util.Objects;
 import net.sf.oval.constraint.Length;
+import net.sf.oval.constraint.Min;
 import net.sf.oval.constraint.NotBlank;
 import net.sf.oval.constraint.NotNegative;
 import net.sf.oval.constraint.NotNull;
@@ -19,6 +20,8 @@ import net.sf.oval.constraint.NotNull;
  * @version 2.0
  */
 public class Product implements Comparable<Product>{
+    @NotNull(message = "ID must be provided.")
+    @NotNegative(message = "ID must be a positive number.")
     private Integer productID;
     
     @NotNull(message = "Name must be provided.")
@@ -27,12 +30,18 @@ public class Product implements Comparable<Product>{
     private String name;
     
     private String description;
+    
+    @NotNull(message = "Category must be provided.")
+    @NotBlank(message = "Category must be provided.")
     private String category;
     
     @NotNull(message = "Price must be provided.")
     @NotNegative(message = "Price must be a positive number.")
     private Double price;
     
+    @NotNull(message = "Price must be provided.")
+    @NotNegative(message = "Price must be a positive number.")
+    @Min(value=1, message="Quanity must be greater than zero.")
     private Integer quantity;
 
     /**
