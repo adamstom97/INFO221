@@ -20,9 +20,6 @@ import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
 /**
  * A class for testing the project's ProductEntry gui.
@@ -30,7 +27,7 @@ import static org.mockito.Mockito.verify;
  * @author adamstom97
  * @version 2.0
  */
-public class EntryTest {
+public class TestEntry {
     private Dao list;
     private DialogFixture fixture;
     private Robot robot;

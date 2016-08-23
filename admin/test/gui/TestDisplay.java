@@ -34,7 +34,7 @@ import static org.mockito.Mockito.mock;
  * @author adamstom97
  * @version 2.0
  */
-public class DisplayTest {
+public class TestDisplay {
     private Dao list;
     private DialogFixture fixture;
     private Robot robot;
