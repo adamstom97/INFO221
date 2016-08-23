@@ -53,7 +53,7 @@ public class ProductDB implements Dao {
             stmt.setInt(6, product.getQuantity());
             stmt.executeUpdate();
         } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+            throw new DaoException(ex.getMessage(), ex);
         }
     }
 
@@ -65,7 +65,7 @@ public class ProductDB implements Dao {
             stmt.setInt(1, product.getProductID());
             stmt.executeUpdate();
         } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+            throw new DaoException(ex.getMessage(), ex);
         }
     }
 
@@ -85,7 +85,7 @@ public class ProductDB implements Dao {
             }
             return products;
         } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+            throw new DaoException(ex.getMessage(), ex);
         }
     }
 
@@ -101,7 +101,7 @@ public class ProductDB implements Dao {
             }
             return categories;
         } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+            throw new DaoException(ex.getMessage(), ex);
         }
     }
 
@@ -122,7 +122,7 @@ public class ProductDB implements Dao {
                 return null;
             }            
         } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+            throw new DaoException(ex.getMessage(), ex);
         }       
     }
 
@@ -143,7 +143,7 @@ public class ProductDB implements Dao {
             } 
             return products;
         } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+            throw new DaoException(ex.getMessage(), ex);
         }       
     }
 }

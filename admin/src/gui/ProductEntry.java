@@ -10,6 +10,7 @@ import gui.helpers.SimpleListModel;
 import java.awt.Window;
 import javax.swing.JOptionPane;
 import dao.Dao;
+import dao.DaoException;
 import gui.helpers.ValidationHelper;
 
 /**
@@ -226,25 +227,30 @@ public class ProductEntry extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if (txtID.isEditable()) {
-            if (list.getProductByID(txtID.getText()) != null) {
-                JOptionPane.showMessageDialog(this, "There is already a product"
-                        + " with that ID.", "ID Already Exists",
-                        JOptionPane.ERROR_MESSAGE);
-                return;
+        try {
+            if (txtID.isEditable()) {
+                if (list.getProductByID(txtID.getText()) != null) {
+                    JOptionPane.showMessageDialog(this, "There is already a product"
+                            + " with that ID.", "ID Already Exists",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                product.setProductID((Integer) txtID.getValue());
             }
-            product.setProductID((Integer) txtID.getValue());
-        }
 
-        product.setName(txtName.getText());
-        product.setDescription(txtDescription.getText());
-        product.setCategory((String) boxCategory.getSelectedItem());
-        product.setPrice((Double) txtPrice.getValue());
-        product.setQuantity((Integer) txtQuantity.getValue());
+            product.setName(txtName.getText());
+            product.setDescription(txtDescription.getText());
+            product.setCategory((String) boxCategory.getSelectedItem());
+            product.setPrice((Double) txtPrice.getValue());
+            product.setQuantity((Integer) txtQuantity.getValue());
 
-        if (vHelper.isObjectValid(product)) {
-            list.addProduct(product);
-            dispose();
+            if (vHelper.isObjectValid(product)) {
+                list.addProduct(product);
+                dispose();
+            }
+        } catch (DaoException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "DAO Error", 
+                    JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 

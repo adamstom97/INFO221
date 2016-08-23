@@ -27,7 +27,7 @@ public class JdbcConnection {
         try {
             return pool.getConnection();
         } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+            throw new DaoException(ex.getMessage(), ex);
         }
     }
 }
