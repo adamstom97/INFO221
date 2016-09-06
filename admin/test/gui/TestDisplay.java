@@ -92,6 +92,8 @@ public class TestDisplay {
                 model.contains(product2));
         assertEquals("Ensure list only contains the correct products", 2, 
                 model.getSize());
+        
+        Mockito.verify(list).getProductList();
     }
 
     @Test
@@ -105,6 +107,8 @@ public class TestDisplay {
         DialogFixture confirmDialog = fixture.dialog(
                 withTitle("Select an Option").andShowing()).requireVisible();
         confirmDialog.button(withText("No")).click();
+        
+        Mockito.verify(list, Mockito.never()).deleteProduct(Mockito.any());
 
         SimpleListModel model = (SimpleListModel) fixture.list("lstDisplay").
                 target().getModel();
@@ -129,6 +133,8 @@ public class TestDisplay {
                 model.getSize());
         assertTrue("Ensure list contains the correct product", 
                 model.contains(product2));
+        
+        // TODO: verify
     }
 
     @Test
@@ -171,6 +177,8 @@ public class TestDisplay {
                 + "product with that ID.", model.getElementAt(0).toString());
         assertEquals("Ensure list only contains the correct products", 1, 
                 model.getSize());
+        
+        // TODO: verify
     }
 
     @Test
@@ -188,6 +196,8 @@ public class TestDisplay {
                 model.contains(product2));
         assertEquals("Ensure list only contains the correct products", 1, 
                 model.getSize());
+        
+        // TODO: verify
     }
     
     @After

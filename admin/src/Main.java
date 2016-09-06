@@ -6,6 +6,7 @@
 import dao.ProductDB;
 import gui.MainMenu;
 import dao.Dao;
+import dao.ProductList;
 
 /**
  * A Main class from which to run the entire admin project.
@@ -14,7 +15,8 @@ import dao.Dao;
  * @version 2.0
  */
 public class Main {
-    private static Dao list = new ProductDB();
+//    private static Dao list = new ProductDB();
+    private static Dao list = new ProductList();
     
     /**
      * Creates an instance of the MainMenu and centers it on the screen.

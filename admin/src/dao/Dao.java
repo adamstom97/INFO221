@@ -7,7 +7,6 @@ package dao;
 
 import domain.Product;
 import java.util.Collection;
-import java.util.Set;
 
 /**
  * An interface for all the dao classes to implement.
@@ -21,5 +20,5 @@ public interface Dao {
     public Collection<Product> getProductList();
     public Collection<String> getCategoryList();
     public Product getProductByID(String productID);
-    public Set<Product> getProductsByCategory(String category);
+    public Collection<Product> getProductsByCategory(String category);
 }

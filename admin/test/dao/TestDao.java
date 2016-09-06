@@ -152,7 +152,7 @@ public class TestDao {
 
     @Test
     public void testGetProductsByCategory() {
-        Set<Product> products = list.getProductsByCategory("a");
+        Collection<Product> products = list.getProductsByCategory("a");
 
         assertTrue("Category a should contain product1", products.contains(
                 product1));
