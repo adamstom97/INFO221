@@ -15,6 +15,8 @@ package domain;
 public class Customer {
     private String userName;
     private String name;
+    private String email;
+    private String address;
     private String creditCardDetails;
     private String password;
 
@@ -23,13 +25,17 @@ public class Customer {
      * 
      * @param userName          the customer's personal, online username
      * @param name              the customer's name
+     * @param email
+     * @param address
      * @param creditCardDetails the customer's credit card number
      * @param password          the customer's password
      */
-    public Customer(String userName, String name, String creditCardDetails, 
-            String password) {
+    public Customer(String userName, String name, String email, String address,
+            String creditCardDetails, String password) {
         this.userName = userName;
         this.name = name;
+        this.email = email;
+        this.address = address;
         this.creditCardDetails = creditCardDetails;
         this.password = password;
     }
@@ -67,6 +73,22 @@ public class Customer {
      */
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     /**
