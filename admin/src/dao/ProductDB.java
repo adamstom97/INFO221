@@ -91,11 +91,11 @@ public class ProductDB implements Dao {
 
     @Override
     public Collection<String> getCategoryList() {
-        String sql = "select category from products";
+        String sql = "select distinct category from products";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
             ResultSet rs = stmt.executeQuery();
-            Collection<String> categories = new TreeSet<>();
+            Collection<String> categories = new ArrayList<>();
             while (rs.next()) {
                 categories.add(rs.getString("category"));
             }
@@ -127,7 +127,7 @@ public class ProductDB implements Dao {
     }
 
     @Override
-    public Set<Product> getProductsByCategory(String category) {
+    public Collection<Product> getProductsByCategory(String category) {
         String sql = "select * from products where category = ?";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {

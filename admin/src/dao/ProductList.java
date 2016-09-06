@@ -25,13 +25,13 @@ public class ProductList implements Dao {
      * A list of the products offered for sale at the shop. Constructed as each 
      * product is added to the list once the user creates and saves them.
      */
-    private static Collection<Product> products = new TreeSet<>();
+//    private static Collection<Product> products = new TreeSet<>();
     
     /**
      * A list of the categories that saved products belong to. Constructed as 
      * each new category is created along with a product and saved by the user.
      */
-    private static Collection<String> categories = new TreeSet<>();
+//    private static Collection<String> categories = new TreeSet<>();
     
     private static SortedMap<String, Product> productsByID = new TreeMap<>();
     private static SortedMap<String, Set<Product>> productsByCategory = new 
@@ -39,10 +39,10 @@ public class ProductList implements Dao {
     
     @Override
     public void addProduct(Product product) {
-        products.add(product);
+//        products.add(product);
         productsByID.put(product.getProductID().toString(), product);
-        if (!categories.contains(product.getCategory())) {
-            categories.add(product.getCategory());
+        if (!productsByCategory.containsKey(product.getCategory())) {
+//            categories.add(product.getCategory());
             Set<Product> productsByCategoryInner = new TreeSet<>();
             productsByCategoryInner.add(product);
             productsByCategory.put(product.getCategory(), 
@@ -56,23 +56,23 @@ public class ProductList implements Dao {
     
     @Override
     public void deleteProduct(Product product) {
-        products.remove(product);
+//        products.remove(product);
         productsByID.remove(product.getProductID().toString());
         productsByCategory.get(product.getCategory()).remove(product);
         if (productsByCategory.get(product.getCategory()).isEmpty()) {
             productsByCategory.remove(product.getCategory());
-            categories.remove(product.getCategory());
+//            categories.remove(product.getCategory());
         }
     }
           
     @Override
     public Collection<Product> getProductList() {
-        return products;
+        return productsByID.values();
     }
     
     @Override
     public Collection<String> getCategoryList() {
-        return categories;
+        return productsByCategory.keySet();
     }
     
     @Override
@@ -81,7 +81,7 @@ public class ProductList implements Dao {
     }
     
     @Override
-    public Set<Product> getProductsByCategory(String category) {
+    public Collection<Product> getProductsByCategory(String category) {
         return productsByCategory.get(category);
     }
 }
