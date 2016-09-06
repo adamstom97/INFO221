@@ -39,10 +39,8 @@ public class ProductList implements Dao {
     
     @Override
     public void addProduct(Product product) {
-//        products.add(product);
         productsByID.put(product.getProductID().toString(), product);
         if (!productsByCategory.containsKey(product.getCategory())) {
-//            categories.add(product.getCategory());
             Set<Product> productsByCategoryInner = new TreeSet<>();
             productsByCategoryInner.add(product);
             productsByCategory.put(product.getCategory(), 
@@ -56,12 +54,10 @@ public class ProductList implements Dao {
     
     @Override
     public void deleteProduct(Product product) {
-//        products.remove(product);
         productsByID.remove(product.getProductID().toString());
         productsByCategory.get(product.getCategory()).remove(product);
         if (productsByCategory.get(product.getCategory()).isEmpty()) {
             productsByCategory.remove(product.getCategory());
-//            categories.remove(product.getCategory());
         }
     }
           

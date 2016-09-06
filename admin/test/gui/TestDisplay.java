@@ -26,7 +26,11 @@ import static org.assertj.swing.core.matcher.DialogMatcher.withTitle;
 import static org.assertj.swing.core.matcher.JButtonMatcher.withText;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 
 /**
  * A class for testing the project's ProductDisplay gui.
@@ -93,7 +97,7 @@ public class TestDisplay {
         assertEquals("Ensure list only contains the correct products", 2, 
                 model.getSize());
         
-        Mockito.verify(list).getProductList();
+        verify(list, atLeast(1)).getProductList();
     }
 
     @Test
@@ -108,7 +112,7 @@ public class TestDisplay {
                 withTitle("Select an Option").andShowing()).requireVisible();
         confirmDialog.button(withText("No")).click();
         
-        Mockito.verify(list, Mockito.never()).deleteProduct(Mockito.any());
+        verify(list, never()).deleteProduct(any());
 
         SimpleListModel model = (SimpleListModel) fixture.list("lstDisplay").
                 target().getModel();
@@ -134,7 +138,7 @@ public class TestDisplay {
         assertTrue("Ensure list contains the correct product", 
                 model.contains(product2));
         
-        // TODO: verify
+        verify(list).deleteProduct(any());
     }
 
     @Test
@@ -167,6 +171,8 @@ public class TestDisplay {
         assertEquals("Ensure list only contains the correct products", 1, 
                 model.getSize());
         
+        verify(list, atLeast(1)).getProductByID("1");
+        
         fixture.textBox("txtSearchID").enterText("3");
         fixture.button("btnSearchID").click();
         
@@ -178,7 +184,7 @@ public class TestDisplay {
         assertEquals("Ensure list only contains the correct products", 1, 
                 model.getSize());
         
-        // TODO: verify
+        verify(list, never()).getProductByID("3");
     }
 
     @Test
@@ -197,8 +203,8 @@ public class TestDisplay {
         assertEquals("Ensure list only contains the correct products", 1, 
                 model.getSize());
         
-        // TODO: verify
-    }
+        verify(list).getProductsByCategory("b");
+        }
     
     @After
     public void tearDown() {
