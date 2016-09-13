@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 package dao;
-
+ 
 import domain.Product;
 import java.util.Collection;
-
+ 
 /**
  * An interface for all the dao classes to implement.
  * 
