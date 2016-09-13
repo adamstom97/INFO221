@@ -5,7 +5,7 @@
  */
 package gui;
 
-import dao.Dao;
+import dao.ProductDao;
 
 /**
  * A graphical user interface class featuring the MainMenu of the product admin 
@@ -15,14 +15,14 @@ import dao.Dao;
  * @version 2.0
  */
 public class MainMenu extends javax.swing.JFrame {
-    Dao list;
+    ProductDao list;
 
     /**
      * Creates new form MainMenu
      * 
      * @param list  the dao class that the system is going to use
      */
-    public MainMenu(Dao list) {
+    public MainMenu(ProductDao list) {
         initComponents();
         this.list = list;
     }

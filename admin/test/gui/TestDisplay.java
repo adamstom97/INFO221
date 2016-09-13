@@ -5,7 +5,6 @@
  */
 package gui;
 
-import dao.Dao;
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import java.util.Collection;
@@ -31,6 +30,7 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import dao.ProductDao;
 
 /**
  * A class for testing the project's ProductDisplay gui.
@@ -39,7 +39,7 @@ import static org.mockito.Mockito.verify;
  * @version 2.0
  */
 public class TestDisplay {
-    private Dao list;
+    private ProductDao list;
     private DialogFixture fixture;
     private Robot robot;
     private Product product1;
@@ -64,7 +64,7 @@ public class TestDisplay {
         Set<Product> categoryFilter = new HashSet<>();
         categoryFilter.add(product2);
 
-        list = mock(Dao.class);
+        list = mock(ProductDao.class);
         when(list.getProductList()).thenReturn(products);
         when(list.getCategoryList()).thenReturn(categories);
         when(list.getProductByID("1")).thenReturn(product1);

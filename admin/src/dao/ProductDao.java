@@ -14,7 +14,7 @@ import java.util.Collection;
  * @author adath325
  * @version 2.0
  */
-public interface Dao {
+public interface ProductDao {
     public void addProduct(Product product);
     public void deleteProduct(Product product);
     public Collection<Product> getProductList();

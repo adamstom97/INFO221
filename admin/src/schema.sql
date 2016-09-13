@@ -19,3 +19,13 @@ create table products (
     quantity integer not null,
     constraint pk_products primary key (productID)
 );
+
+create table customers (
+    userName varchar not null,
+    name varchar not null,
+    email varchar not null,
+    address varchar not null,
+    creditCardDetails varchar not null,
+    password varchar not null,
+    constraint pk_customers primary key (userName)
+);

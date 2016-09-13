@@ -5,7 +5,6 @@
  */
 package gui;
 
-import dao.Dao;
 import domain.Product;
 import java.util.Collection;
 import java.util.TreeSet;
@@ -20,6 +19,7 @@ import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import dao.ProductDao;
 
 /**
  * A class for testing the project's ProductEntry gui.
@@ -28,7 +28,7 @@ import static org.mockito.Mockito.verify;
  * @version 2.0
  */
 public class TestEntry {
-    private Dao list;
+    private ProductDao list;
     private DialogFixture fixture;
     private Robot robot;
 
@@ -41,7 +41,7 @@ public class TestEntry {
         categories.add("a");
         categories.add("b");
 
-        list = mock(Dao.class);
+        list = mock(ProductDao.class);
         when(list.getCategoryList()).thenReturn(categories);
     }
 

@@ -8,9 +8,9 @@ package gui;
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import javax.swing.JOptionPane;
-import dao.Dao;
 import java.util.HashSet;
 import java.util.Set;
+import dao.ProductDao;
 
 /**
  * A graphical user interface class for displaying all the products offered for
@@ -20,7 +20,7 @@ import java.util.Set;
  * @version 2.0
  */
 public class ProductDisplay extends javax.swing.JDialog {
-    Dao list;
+    ProductDao list;
     SimpleListModel productsForDisplay = new SimpleListModel();
     SimpleListModel categoriesForDisplay = new SimpleListModel();
     Set<String> categoriesAll = new HashSet<>();
@@ -32,7 +32,7 @@ public class ProductDisplay extends javax.swing.JDialog {
      * @param modal  controls whether the form blocks access to its parent
      * @param list   the dao class that the system is using
      */
-    public ProductDisplay(java.awt.Frame parent, boolean modal, Dao list) {
+    public ProductDisplay(java.awt.Frame parent, boolean modal, ProductDao list) {
         super(parent, modal);
         initComponents();
         this.list = list;
