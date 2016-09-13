@@ -12,6 +12,7 @@
         <title>Confirmation</title>
     </head>
     <body>
+        <%@include file="/WEB-INF/jspf/navigation.jspf" %>
         <h1>Order confirmation</h1>
     </body>
 </html>

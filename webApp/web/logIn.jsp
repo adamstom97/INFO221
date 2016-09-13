@@ -12,6 +12,7 @@
         <title>Log in</title>
     </head>
     <body>
+        <%@include file="/WEB-INF/jspf/navigation.jspf" %>
         <h1>Log in</h1>
     </body>
 </html>

@@ -22,8 +22,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "CreateAccount", urlPatterns = {"/CreateAccount"})
 public class CreateAccount extends HttpServlet {
-    CustomerDAO list;
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,8 +43,9 @@ public class CreateAccount extends HttpServlet {
             String password = request.getParameter("password");
             
             Customer customer = new Customer(userName, name, email, address, creditCardDetails, password);
-            list = new CustomerDB();
-            list.addCustomer(customer);
+            new CustomerDB().addCustomer(customer);
+            
+            response.sendRedirect(".");
         }
     }
 

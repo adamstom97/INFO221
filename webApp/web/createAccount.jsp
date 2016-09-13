@@ -12,6 +12,7 @@
         <title>Create Account</title>
     </head>
     <body>
+        <%@include file="/WEB-INF/jspf/navigation.jspf" %>
         <h1>Create an Account</h1>
         <form action="CreateAccount" method="post">
             <fieldset>

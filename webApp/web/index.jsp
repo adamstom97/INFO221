@@ -12,6 +12,7 @@
         <title>Home</title>
     </head>
     <body>
+        <%@include file="/WEB-INF/jspf/navigation.jspf" %>
         <h1>Home page</h1>
     </body>
 </html>

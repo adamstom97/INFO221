@@ -12,6 +12,7 @@
         <title>Checkout</title>
     </head>
     <body>
+        <%@include file="/WEB-INF/jspf/navigation.jspf" %>
         <h1>Shopping cart</h1>
     </body>
 </html>

@@ -15,6 +15,7 @@
         <title>Display Products</title>
     </head>
     <body>
+        <%@include file="/WEB-INF/jspf/navigation.jspf" %>
         <%
             ProductDB list = new ProductDB();
             Collection<Product> products = list.getProductList();
