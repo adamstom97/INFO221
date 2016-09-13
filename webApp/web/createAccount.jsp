@@ -13,11 +13,11 @@
     </head>
     <body>
         <h1>Create an Account</h1>
-        <form>
+        <form action="CreateAccount" method="post">
             <fieldset>
                 <legend>Account Details</legend>
                 <label for="username">Username:</label>
-                <input type="text" name="username"><br>
+                <input type="text" name="userName"><br>
                 <label for="name">Name:</label>
                 <input type="text" name="name"><br>
                 <label for="email">Email:</label>
@@ -25,7 +25,7 @@
                 <label for="address">Address:</label>
                 <input type="text" name="address"><br>
                 <label for="creditcard">Credit Card:</label>
-                <input type="text" name="creditcard"><br>
+                <input type="text" name="creditCardDetails"><br>
                 <label for="password">Password:</label>
                 <input type="text" name="password"><br>
                 <input type="submit" name="create" value="Create Account">
