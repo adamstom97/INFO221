@@ -11,7 +11,7 @@ import java.awt.Window;
 import javax.swing.JOptionPane;
 import dao.DaoException;
 import gui.helpers.ValidationHelper;
-import dao.ProductDao;
+import dao.ProductDAO;
 
 /**
  * A graphical user interface class for creating and saving a new product to be
@@ -24,7 +24,7 @@ import dao.ProductDao;
  */
 public class ProductEntry extends javax.swing.JDialog {
 
-    ProductDao list;
+    ProductDAO list;
     SimpleListModel productsForDisplay = new SimpleListModel();
     Product product = new Product();
     ValidationHelper vHelper = new ValidationHelper();
@@ -36,7 +36,7 @@ public class ProductEntry extends javax.swing.JDialog {
      * @param modal controls whether the form blocks access to its parent
      * @param list the dao class that the system is using
      */
-    public ProductEntry(Window parent, boolean modal, ProductDao list) {
+    public ProductEntry(Window parent, boolean modal, ProductDAO list) {
         super(parent);
         setModal(modal);
         this.list = list;
@@ -60,7 +60,7 @@ public class ProductEntry extends javax.swing.JDialog {
      * @param list the dao class that the system is using
      * @param product the product chosen to be edited
      */
-    public ProductEntry(Window parent, boolean modal, ProductDao list, Product product) {
+    public ProductEntry(Window parent, boolean modal, ProductDAO list, Product product) {
         this(parent, modal, list);
         this.product = product;
 

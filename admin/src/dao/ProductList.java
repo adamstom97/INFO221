@@ -19,7 +19,7 @@ import java.util.TreeSet;
  * @author adath325
  * @version 2.0
  */
-public class ProductList implements ProductDao {
+public class ProductList implements ProductDAO {
     
     /**
      * A list of the products offered for sale at the shop. Constructed as each 

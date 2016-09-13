@@ -24,7 +24,7 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class TestDao {
 
-    ProductDao list;
+    ProductDAO list;
     private Product product1;
     private Product product2;
     private Product product3;
@@ -40,7 +40,7 @@ public class TestDao {
         });
     }
 
-    public TestDao(ProductDao list) {
+    public TestDao(ProductDAO list) {
         this.list = list;
     }
 

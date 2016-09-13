@@ -30,7 +30,7 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
-import dao.ProductDao;
+import dao.ProductDAO;
 
 /**
  * A class for testing the project's ProductDisplay gui.
@@ -39,7 +39,7 @@ import dao.ProductDao;
  * @version 2.0
  */
 public class TestDisplay {
-    private ProductDao list;
+    private ProductDAO list;
     private DialogFixture fixture;
     private Robot robot;
     private Product product1;
@@ -64,7 +64,7 @@ public class TestDisplay {
         Set<Product> categoryFilter = new HashSet<>();
         categoryFilter.add(product2);
 
-        list = mock(ProductDao.class);
+        list = mock(ProductDAO.class);
         when(list.getProductList()).thenReturn(products);
         when(list.getCategoryList()).thenReturn(categories);
         when(list.getProductByID("1")).thenReturn(product1);

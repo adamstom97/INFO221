@@ -6,7 +6,7 @@
 import dao.ProductDB;
 import gui.MainMenu;
 import dao.ProductList;
-import dao.ProductDao;
+import dao.ProductDAO;
 
 /**
  * A Main class from which to run the entire admin project.
@@ -15,7 +15,7 @@ import dao.ProductDao;
  * @version 2.0
  */
 public class Main {
-    private static ProductDao list = new ProductDB();
+    private static ProductDAO list = new ProductDB();
 //    private static ProductDao list = new ProductList();
     
     /**

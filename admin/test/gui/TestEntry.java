@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import dao.ProductDao;
+import dao.ProductDAO;
 
 /**
  * A class for testing the project's ProductEntry gui.
@@ -28,7 +28,7 @@ import dao.ProductDao;
  * @version 2.0
  */
 public class TestEntry {
-    private ProductDao list;
+    private ProductDAO list;
     private DialogFixture fixture;
     private Robot robot;
 
@@ -41,7 +41,7 @@ public class TestEntry {
         categories.add("a");
         categories.add("b");
 
-        list = mock(ProductDao.class);
+        list = mock(ProductDAO.class);
         when(list.getCategoryList()).thenReturn(categories);
     }
 
