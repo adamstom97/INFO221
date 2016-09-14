@@ -1,30 +1,30 @@
+<%@page import="domain.Order"%>
 <%@page import="domain.Customer"%>
 <%
     HttpSession currentSession = request.getSession();
     Customer customer = (Customer) currentSession.getAttribute("customer");
     if (customer != null) {
+        currentSession.setAttribute("order", new Order(1, customer));
 %>
 <p>
     Welcome <%=customer.getName()%>
 </p>
-<%
-    }
-%>
 <nav>
     <ul>
         <li><a href="index.jsp">Home</a></li>
         <li><a href="browseProducts.jsp">Browse Products</a></li>
         <li><a href="checkout.jsp">View Cart</a></li>
-        <li><a href="logIn.jsp"><%
-            if (customer != null) {
-                %>
-                Log Out
-                <%
-                } else {
-                %>
-                Log In
-                <%
-                    }
-                %></a></li>
+        <li><a href="logIn.jsp">Log Out</a></li>
     </ul>
 </nav>
+<%
+} else {
+%>
+<nav>
+    <ul>
+        <li><a href="logIn.jsp">Log In</a></li>
+    </ul>
+</nav>
+<%
+    }
+%>

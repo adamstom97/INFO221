@@ -5,7 +5,6 @@
  */
 package web;
 
-import dao.CustomerDAO;
 import dao.CustomerDB;
 import domain.Customer;
 import java.io.IOException;
