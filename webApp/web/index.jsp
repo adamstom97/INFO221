@@ -13,6 +13,6 @@
     </head>
     <body>
         <%@include file="/WEB-INF/jspf/navigation.jspf" %>
-        <h1>Home page</h1>
+        <h1>Welcome to TheShop.com</h1>
     </body>
 </html>

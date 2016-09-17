@@ -4,7 +4,7 @@
     HttpSession currentSession = request.getSession();
     Customer customer = (Customer) currentSession.getAttribute("customer");
     if (customer != null) {
-        currentSession.setAttribute("order", new Order(1, customer));
+        currentSession.setAttribute("order", new Order(customer));
 %>
 <p>
     Welcome <%=customer.getName()%>
@@ -22,6 +22,7 @@
 %>
 <nav>
     <ul>
+        <li><a href="index.jsp">Home</a></li>
         <li><a href="logIn.jsp">Log In</a></li>
     </ul>
 </nav>

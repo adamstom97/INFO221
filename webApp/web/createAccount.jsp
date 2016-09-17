@@ -28,7 +28,7 @@
                 <label for="creditcard">Credit Card:</label>
                 <input type="text" name="creditCardDetails"><br>
                 <label for="password">Password:</label>
-                <input type="text" name="password"><br>
+                <input type="password" name="password"><br>
                 <input type="submit" name="create" value="Create Account">
             </fieldset>
         </form>
