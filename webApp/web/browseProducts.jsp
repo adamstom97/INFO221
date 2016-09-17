@@ -16,31 +16,44 @@
     </head>
     <body>
         <%@include file="/WEB-INF/jspf/navigation.jspf" %>
-        <%
-            ProductDB list = new ProductDB();
-            Collection<Product> products = list.getProductList();
+        <h1>Products</h1>
+        <nav>
+            Categories:
+            <ul>
+                <li><a href="browseProducts.jsp">All</a></li>
+                <li><a href="browseProducts.jsp?category=Fruit">Fruit</a></li>
+                <li><a href="browseProducts.jsp?category=Vegetable">Vegetables</a></li>
+            </ul>
+        </nav>
+        <%            Collection<Product> products;
+            String category = (String) request.getParameter("category");
+            if (category == null) {
+                products = new ProductDB().getProductList();
+            } else {
+                products = new ProductDB().getProductsByCategory(category);
+            }
         %>
         <table>
             <tr>
-                <th>ID</th>
-                <th>Product</th>
-                <th></th>
-                <th>Category</th>
+                <th>Name</th>
+                <th>Description</th>
                 <th>Price</th>
-                <th>Quantity</th>
+                <th>Available</th>
+                <th></th>
             </tr>
             <%
                 for (Product product : products) {
             %>
+            <form action="AddProduct" method="post">
             <tr>
-                <td><%=product.getProductID()%></td>
                 <td><%=product.getName()%></td>
                 <td><%=product.getDescription()%></td>
-                <td><%=product.getCategory()%></td>
                 <td><%=product.getPrice()%></td>
                 <td><%=product.getQuantity()%></td>
+                <td><input type="submit" name="productSelect" value="Buy"></td>
             </tr>
-            <% } %>
+            </form>
+            <% }%>
         </table>
     </body>
 </html>

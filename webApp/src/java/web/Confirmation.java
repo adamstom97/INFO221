@@ -5,8 +5,6 @@
  */
 package web;
 
-import dao.CustomerDB;
-import domain.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Adams
  */
-@WebServlet(name = "LogIn", urlPatterns = {"/LogIn"})
-public class LogIn extends HttpServlet {
+@WebServlet(name = "Confirmation", urlPatterns = {"/Confirmation"})
+public class Confirmation extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,16 +33,7 @@ public class LogIn extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String userName = request.getParameter("userName");
-            String password = request.getParameter("password");
-            
-            Customer customer = new CustomerDB().getCustomer(userName, password);
-            if (customer == null) {
-                response.sendRedirect("/shop/logIn.jsp");
-            } else {
-                request.getSession().setAttribute("customer", customer);
-                response.sendRedirect(".");
-            }
+            response.sendRedirect("/shop/confirmation.jsp");
         }
     }
 

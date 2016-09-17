@@ -14,5 +14,9 @@
     <body>
         <%@include file="/WEB-INF/jspf/navigation.jspf" %>
         <h1>Shopping cart</h1>
+        <p>Your order currently consists of:</p>
+        <form action="Confirmation" method="post">
+            <input type="submit" name="checkout" value="Checkout Order">
+        </form>
     </body>
 </html>

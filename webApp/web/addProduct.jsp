@@ -13,6 +13,6 @@
     </head>
     <body>
         <%@include file="/WEB-INF/jspf/navigation.jspf" %>
-        <h1>Add product</h1>
+        <h1>How many do you want to buy?</h1>
     </body>
 </html>

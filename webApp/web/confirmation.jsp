@@ -13,6 +13,7 @@
     </head>
     <body>
         <%@include file="/WEB-INF/jspf/navigation.jspf" %>
-        <h1>Order confirmation</h1>
+        <h1>Thank you for your order</h1>
+        <p>We have emailed the details of your order to your registered email address.</p>
     </body>
 </html>
