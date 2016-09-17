@@ -5,14 +5,17 @@
  */
 package domain;
 
+import java.util.Objects;
+
 /**
- * A class containing all the information on a single customer's account for 
- * the shop.
- * 
+ * A class containing all the information on a single customer's account for the
+ * shop.
+ *
  * @author adath325
  * @version 2.0
  */
 public class Customer {
+
     private String userName;
     private String name;
     private String email;
@@ -22,13 +25,13 @@ public class Customer {
 
     /**
      * A constructor for the customer.
-     * 
-     * @param userName          the customer's personal, online username
-     * @param name              the customer's name
+     *
+     * @param userName the customer's personal, online username
+     * @param name the customer's name
      * @param email
      * @param address
      * @param creditCardDetails the customer's credit card number
-     * @param password          the customer's password
+     * @param password the customer's password
      */
     public Customer(String userName, String name, String email, String address,
             String creditCardDetails, String password) {
@@ -42,9 +45,22 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" + "userName=" + userName + ", name=" + name + 
-                ", creditCardDetails=" + creditCardDetails + 
-                ", password=" + password + '}';
+        return "Customer{" + "userName=" + userName + ", name=" + name + ", email=" + email + ", address=" + address + ", creditCardDetails=" + creditCardDetails + ", password=" + password + '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Customer other = (Customer) obj;
+        return Objects.equals(this.userName+this.password, other.userName+other.password);
     }
 
     /**
@@ -55,7 +71,7 @@ public class Customer {
     }
 
     /**
-     * @param userName  {@link Customer#userName}
+     * @param userName {@link Customer#userName}
      */
     public void setUserName(String userName) {
         this.userName = userName;
@@ -69,12 +85,12 @@ public class Customer {
     }
 
     /**
-     * @param name  {@link Customer#name}
+     * @param name {@link Customer#name}
      */
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public String getEmail() {
         return email;
     }
@@ -92,14 +108,14 @@ public class Customer {
     }
 
     /**
-     * @return creditCardDetails    {@link Customer#creditCardDetails}
+     * @return creditCardDetails {@link Customer#creditCardDetails}
      */
     public String getCreditCardDetails() {
         return creditCardDetails;
     }
 
     /**
-     * @param creditCardDetails     {@link Customer#creditCardDetails}
+     * @param creditCardDetails {@link Customer#creditCardDetails}
      */
     public void setCreditCardDetails(String creditCardDetails) {
         this.creditCardDetails = creditCardDetails;
@@ -113,7 +129,7 @@ public class Customer {
     }
 
     /**
-     * @param password  {@link Customer#password}
+     * @param password {@link Customer#password}
      */
     public void setPassword(String password) {
         this.password = password;

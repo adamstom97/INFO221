@@ -75,4 +75,16 @@ public class CustomerDB implements CustomerDAO {
             throw new DaoException(ex.getMessage(), ex);
         }
     }
+    
+    @Override
+    public void deleteCustomer(Customer customer) {
+        String sql = "delete from customers where userName = ?";
+        try (Connection dbCon = JdbcConnection.getConnection(url);
+                PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+            stmt.setString(1, customer.getUserName());
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            throw new DaoException(ex.getMessage(), ex);
+        }
+    }
 }
