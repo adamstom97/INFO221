@@ -110,6 +110,9 @@ public class ProductDB implements ProductDAO {
         String sql = "select * from products where productID = ?";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+            if (productID.equals("")) {
+                return null;
+            }
             stmt.setInt(1, Integer.parseInt(productID));
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {

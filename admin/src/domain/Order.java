@@ -36,11 +36,9 @@ public class Order {
     /**
      * A constructor for the order.
      * 
-     * @param orderID   a unique ID for the order
      * @param customer  the customer that is carrying out the transaction
      */
-    public Order(int orderID, Customer customer) {
-        this.orderID = orderID;
+    public Order(Customer customer) {
         this.customer = customer;
     }
     

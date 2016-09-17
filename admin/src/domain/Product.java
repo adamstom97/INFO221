@@ -39,8 +39,8 @@ public class Product implements Comparable<Product>{
     @NotNegative(message = "Price must be a positive number.")
     private Double price;
     
-    @NotNull(message = "Price must be provided.")
-    @NotNegative(message = "Price must be a positive number.")
+    @NotNull(message = "Quantity must be provided.")
+    @NotNegative(message = "Quantity must be a positive number.")
     @Min(value=1, message="Quanity must be greater than zero.")
     private Integer quantity;
 
