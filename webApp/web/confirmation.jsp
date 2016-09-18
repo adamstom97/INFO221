@@ -1,7 +1,8 @@
 <%-- 
-    Document   : confirmation
-    Created on : 13/09/2016, 3:20:07 PM
+    Document   : confirmation   confirms that the customer's order has gone
+                                through
     Author     : adath325
+    Version    : 3.0
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,6 +15,7 @@
     <body>
         <%@include file="/WEB-INF/jspf/navigation.jspf" %>
         <h1>Thank you for your order</h1>
-        <p>We have emailed the details of your order to your registered email address.</p>
+        <p>We have e-mailed the details of your order to your registered e-mail 
+            address.</p>
     </body>
 </html>

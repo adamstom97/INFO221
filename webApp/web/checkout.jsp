@@ -1,7 +1,8 @@
 <%-- 
-    Document   : checkout
-    Created on : 13/09/2016, 3:19:36 PM
+    Document   : checkout   displays the customer's chosen items and asks for
+                            confirmation.
     Author     : adath325
+    Version    : 3.0
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

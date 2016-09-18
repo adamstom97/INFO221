@@ -1,7 +1,7 @@
 <%-- 
     Document   : createAccount
-    Created on : 6/09/2016, 3:23:39 PM
     Author     : adath325
+    Version    : 3.0
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

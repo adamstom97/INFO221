@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author Adams
+ * A servlet for adding products to a customer's order.
+ * 
+ * @author adamstom97
+ * @version 3.0
  */
 @WebServlet(name = "AddProduct", urlPatterns = {"/AddProduct"})
 public class AddProduct extends HttpServlet {
@@ -29,7 +31,8 @@ public class AddProduct extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, 
+            HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {

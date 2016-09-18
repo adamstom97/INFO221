@@ -1,7 +1,7 @@
 <%-- 
     Document   : displayProducts
-    Created on : 13/09/2016, 2:38:41 PM
     Author     : adath325
+    Version    : 3.0
 --%>
 
 <%@page import="java.util.Collection"%>
@@ -22,7 +22,8 @@
             <ul>
                 <li><a href="browseProducts.jsp">All</a></li>
                 <li><a href="browseProducts.jsp?category=Fruit">Fruit</a></li>
-                <li><a href="browseProducts.jsp?category=Vegetable">Vegetables</a></li>
+                <li><a href="browseProducts.jsp?category=Vegetable">Vegetables
+                    </a></li>
             </ul>
         </nav>
         <%            Collection<Product> products;

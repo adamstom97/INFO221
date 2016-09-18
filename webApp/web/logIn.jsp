@@ -1,7 +1,7 @@
 <%-- 
     Document   : logIn
-    Created on : 13/09/2016, 3:15:13 PM
     Author     : adath325
+    Version    : 3.0
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,7 +27,8 @@
                 <input type="submit" name="create" value="Log in">
             </fieldset>
         </form>
-        <p>If you don't have an account then you can <a href='createAccount.jsp'>create one</a>.</p>
+        <p>If you don't have an account then you can <a href='createAccount.jsp'
+                                                        >create one</a>.</p>
         <%
         } else {
         %>

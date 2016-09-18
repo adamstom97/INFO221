@@ -1,7 +1,8 @@
 <%-- 
-    Document   : addProduct
-    Created on : 13/09/2016, 3:16:57 PM
+    Document   : addProduct     for adding an amount of a chosen product to the
+                                customer's order.
     Author     : adath325
+    Version    : 3.0
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

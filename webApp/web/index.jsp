@@ -1,7 +1,7 @@
 <%-- 
-    Document   : index
-    Created on : 13/09/2016, 3:14:26 PM
+    Document   : index      home page of the site.
     Author     : adath325
+    Version    : 3.0
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

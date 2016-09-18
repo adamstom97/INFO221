@@ -16,8 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * A servlet for creating a new account.
+ * 
  * @author adath325
+ * @version 3.0
  */
 @WebServlet(name = "CreateAccount", urlPatterns = {"/CreateAccount"})
 public class CreateAccount extends HttpServlet {
@@ -30,7 +32,8 @@ public class CreateAccount extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, 
+            HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -38,10 +41,12 @@ public class CreateAccount extends HttpServlet {
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             String address = request.getParameter("address");
-            String creditCardDetails = request.getParameter("creditCardDetails");
+            String creditCardDetails = request.getParameter(
+                    "creditCardDetails");
             String password = request.getParameter("password");
             
-            Customer customer = new Customer(userName, name, email, address, creditCardDetails, password);
+            Customer customer = new Customer(userName, name, email, address, 
+                    creditCardDetails, password);
             new CustomerDB().addCustomer(customer);
             
             response.sendRedirect(".");
