@@ -12,10 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * A dao class connected to the h2 database system.
+ * A dao class connected to the h2 database system, for customers.
  *
- * @author adath325
- * @version 2.0
+ * @author adamstom97
+ * @version 3.0
  */
 public class CustomerDB implements CustomerDAO {
 
@@ -56,7 +56,8 @@ public class CustomerDB implements CustomerDAO {
 
     @Override
     public Customer getCustomer(String userName, String password) {
-        String sql = "select * from customers where (userName=?) and (password=?)";
+        String sql = "select * from customers where (userName=?) and "
+                + "(password=?)";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
             stmt.setString(1, userName);
@@ -65,7 +66,8 @@ public class CustomerDB implements CustomerDAO {
             if (rs.next()) {
                 Customer customer = new Customer(rs.getString("userName"),
                         rs.getString("name"), rs.getString("email"),
-                        rs.getString("address"), rs.getString("creditCardDetails"),
+                        rs.getString("address"), 
+                        rs.getString("creditCardDetails"), 
                         rs.getString("password"));
                 return customer;
             } else {

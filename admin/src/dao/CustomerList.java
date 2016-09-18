@@ -10,11 +10,17 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 /**
- *
- * @author Adams
+ * A data access object class for storing a list of all the customers of the 
+ * shop.
+ * 
+ * @author adamstom97
+ * @version 3.0
  */
 public class CustomerList implements CustomerDAO {
 
+    /**
+     * A list of customers, sorted by userName.
+     */
     private static SortedMap<String, Customer> list = new TreeMap<>();
 
     @Override

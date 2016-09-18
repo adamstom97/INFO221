@@ -12,7 +12,7 @@ import dao.ProductDAO;
  * system, including buttons to ope the ProductEntry and ProductDisplay dialogs.
  * 
  * @author adath325
- * @version 2.0
+ * @version 3.0
  */
 public class MainMenu extends javax.swing.JFrame {
     ProductDAO list;

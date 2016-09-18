@@ -15,8 +15,11 @@ import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 
 /**
- *
+ * A helper for input validation, ensuring the decimal format of a given 
+ * textField.
+ * 
  * @author adath325
+ * @version 3.0
  */
 public class ValidationHelper {
 

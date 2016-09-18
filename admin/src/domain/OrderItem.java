@@ -10,7 +10,7 @@ package domain;
  * wishes to buy, including how much of it.
  * 
  * @author adath325
- * @version 2.0
+ * @version 3.0
  */
 public class OrderItem {
     private double quantityPurchased;

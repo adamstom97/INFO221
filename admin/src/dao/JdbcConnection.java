@@ -13,7 +13,7 @@ import org.h2.jdbcx.JdbcConnectionPool;
  * The connection to the h2 system for the JDBC dao class (ProductDB).
  * 
  * @author adath325
- * @version 2.0
+ * @version 3.0
  */
 public class JdbcConnection {
     private static final String USERNAME = "sa";

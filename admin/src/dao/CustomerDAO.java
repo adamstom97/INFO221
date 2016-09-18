@@ -8,10 +8,10 @@ package dao;
 import domain.Customer;
 
 /**
- * An interface for all the dao classes to implement.
+ * An interface for all the customer dao classes to implement.
  * 
- * @author adath325
- * @version 2.0
+ * @author adamstom97
+ * @version 3.0
  */
 public interface CustomerDAO {
     public void addCustomer(Customer customer);

@@ -17,7 +17,7 @@ import dao.ProductDAO;
  * sale at the shop. The products are taken from the list stored in ProductList.
  * 
  * @author adath325
- * @version 2.0
+ * @version 3.0
  */
 public class ProductDisplay extends javax.swing.JDialog {
     ProductDAO list;
@@ -32,7 +32,8 @@ public class ProductDisplay extends javax.swing.JDialog {
      * @param modal  controls whether the form blocks access to its parent
      * @param list   the dao class that the system is using
      */
-    public ProductDisplay(java.awt.Frame parent, boolean modal, ProductDAO list) {
+    public ProductDisplay(java.awt.Frame parent, boolean modal, 
+            ProductDAO list) {
         super(parent, modal);
         initComponents();
         this.list = list;

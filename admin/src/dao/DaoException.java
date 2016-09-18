@@ -6,8 +6,10 @@
 package dao;
 
 /**
- *
+ * An exception class for handling DAO exceptions.
+ * 
  * @author adath325
+ * @version 3.0
  */
 public class DaoException extends RuntimeException {
 

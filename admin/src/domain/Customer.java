@@ -12,9 +12,9 @@ import java.util.Objects;
  * shop.
  *
  * @author adath325
- * @version 2.0
+ * @version 3.0
  */
-public class Customer {
+public class Customer implements Comparable<Customer>{
 
     private String userName;
     private String name;
@@ -45,7 +45,10 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" + "userName=" + userName + ", name=" + name + ", email=" + email + ", address=" + address + ", creditCardDetails=" + creditCardDetails + ", password=" + password + '}';
+        return "Customer{" + "userName=" + userName + ", name=" + name + 
+                ", email=" + email + ", address=" + address + 
+                ", creditCardDetails=" + creditCardDetails + ", password=" + 
+                password + '}';
     }
 
     @Override
@@ -60,7 +63,16 @@ public class Customer {
             return false;
         }
         final Customer other = (Customer) obj;
-        return Objects.equals(this.userName+this.password, other.userName+other.password);
+        return Objects.equals(this.userName+this.password, 
+                other.userName+other.password);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.userName);
+        hash = 97 * hash + Objects.hashCode(this.password);
+        return hash;
     }
 
     /**
@@ -133,5 +145,12 @@ public class Customer {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public int compareTo(Customer other) {
+        String myUserName = this.getUserName();
+        String theirUserName = other.getUserName();
+        return myUserName.compareTo(theirUserName);
     }
 }

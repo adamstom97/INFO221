@@ -9,10 +9,10 @@ import domain.Product;
 import java.util.Collection;
  
 /**
- * An interface for all the dao classes to implement.
+ * An interface for all the product dao classes to implement.
  * 
  * @author adath325
- * @version 2.0
+ * @version 3.0
  */
 public interface ProductDAO {
     public void addProduct(Product product);

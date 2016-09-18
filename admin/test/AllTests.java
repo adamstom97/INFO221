@@ -11,7 +11,7 @@ import org.junit.runners.Suite;
  * A class to call all the project's test classes at once.
  * 
  * @author adamstom97
- * @version 2.0
+ * @version 3.0
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({dao.TestProductDAO.class, dao.TestCustomerDAO.class, 

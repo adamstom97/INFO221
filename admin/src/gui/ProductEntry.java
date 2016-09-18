@@ -20,7 +20,7 @@ import dao.ProductDAO;
  * ProductList to be stored.
  *
  * @author adath325
- * @version 2.0
+ * @version 3.0
  */
 public class ProductEntry extends javax.swing.JDialog {
 
@@ -60,7 +60,8 @@ public class ProductEntry extends javax.swing.JDialog {
      * @param list the dao class that the system is using
      * @param product the product chosen to be edited
      */
-    public ProductEntry(Window parent, boolean modal, ProductDAO list, Product product) {
+    public ProductEntry(Window parent, boolean modal, ProductDAO list, 
+            Product product) {
         this(parent, modal, list);
         this.product = product;
 
@@ -230,8 +231,8 @@ public class ProductEntry extends javax.swing.JDialog {
         try {
             if (txtID.isEditable()) {
                 if (list.getProductByID(txtID.getText()) != null) {
-                    JOptionPane.showMessageDialog(this, "There is already a product"
-                            + " with that ID.", "ID Already Exists",
+                    JOptionPane.showMessageDialog(this, "There is already a "
+                            + "product with that ID.", "ID Already Exists",
                             JOptionPane.ERROR_MESSAGE);
                     return;
                 }

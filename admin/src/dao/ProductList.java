@@ -17,22 +17,13 @@ import java.util.TreeSet;
  * sale at the shop, so they can be displayed to the user from ProductDisplay.
  * 
  * @author adath325
- * @version 2.0
+ * @version 3.0
  */
 public class ProductList implements ProductDAO {
     
     /**
-     * A list of the products offered for sale at the shop. Constructed as each 
-     * product is added to the list once the user creates and saves them.
+     * Collections of products, sorted by productID and category.
      */
-//    private static Collection<Product> products = new TreeSet<>();
-    
-    /**
-     * A list of the categories that saved products belong to. Constructed as 
-     * each new category is created along with a product and saved by the user.
-     */
-//    private static Collection<String> categories = new TreeSet<>();
-    
     private static SortedMap<String, Product> productsByID = new TreeMap<>();
     private static SortedMap<String, Set<Product>> productsByCategory = new 
         TreeMap<>();

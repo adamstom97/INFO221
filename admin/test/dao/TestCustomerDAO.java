@@ -46,14 +46,15 @@ public class TestCustomerDAO {
 
     @Test
     public void testLogIn() {
-        customer = new Customer("adamstom97", "Tom Adams", "adamstom97@gmail.com", "396 Hillboro Road, Timaru", "MasterCard", "password");
+        customer = new Customer("a", "A", "a@x.com", "123 B", "C", "password");
 
         list.addCustomer(customer);
-        retrieved = list.getCustomer("adamstom97", "password");
+        retrieved = list.getCustomer("a", "password");
 
         assertEquals("Retrieved customer should be the same as the saved one",
                 customer, retrieved);
-        assertEquals("The customer's username should be the same as customer2's", 
+        assertEquals("The customer's username should be the same as "
+                + "customer2's", 
                 customer.getUserName(), retrieved.getUserName());
         assertEquals("The customer's name should be the same as customer2's", 
                 customer.getName(), retrieved.getName());
@@ -61,13 +62,16 @@ public class TestCustomerDAO {
                 customer.getEmail(), retrieved.getEmail());
         assertEquals("The customer's address should be the same as customer2's", 
                 customer.getAddress(), retrieved.getAddress());
-        assertEquals("The customer's credit card should be the same as customer2's", 
-                customer.getCreditCardDetails(), retrieved.getCreditCardDetails());
-        assertEquals("The customer's password should be the same as customer2's", 
+        assertEquals("The customer's credit card should be the same as "
+                + "customer2's", 
+                customer.getCreditCardDetails(), 
+                retrieved.getCreditCardDetails());
+        assertEquals("The customer's password should be the same as "
+                + "customer2's", 
                 customer.getPassword(), retrieved.getPassword());
         
         list.deleteCustomer(customer);
-        retrieved = list.getCustomer("adamstom97", "password");
+        retrieved = list.getCustomer("a", "password");
         assertNull("Customer should no longer exist", retrieved);
     }
 
