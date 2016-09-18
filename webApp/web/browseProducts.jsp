@@ -4,6 +4,7 @@
     Version    : 3.0
 --%>
 
+<%@page import="dao.ProductDAO"%>
 <%@page import="java.util.Collection"%>
 <%@page import="dao.ProductDB"%>
 <%@page import="domain.Product"%>
@@ -21,17 +22,22 @@
             Categories:
             <ul>
                 <li><a href="browseProducts.jsp">All</a></li>
-                <li><a href="browseProducts.jsp?category=Fruit">Fruit</a></li>
-                <li><a href="browseProducts.jsp?category=Vegetable">Vegetables
-                    </a></li>
+                    <%                    ProductDAO list = new ProductDB();
+                        Collection<String> categories = list.getCategoryList();
+                        for (String category : categories) {
+                    %>
+                <li><a href="browseProducts.jsp?category=<%=category%>"><%=category%></a></li>
+                    <%
+                        }
+                    %>
             </ul>
         </nav>
         <%            Collection<Product> products;
             String category = (String) request.getParameter("category");
             if (category == null) {
-                products = new ProductDB().getProductList();
+                products = list.getProductList();
             } else {
-                products = new ProductDB().getProductsByCategory(category);
+                products = list.getProductsByCategory(category);
             }
         %>
         <table>
@@ -46,13 +52,13 @@
                 for (Product product : products) {
             %>
             <form action="AddProduct" method="post">
-            <tr>
-                <td><%=product.getName()%></td>
-                <td><%=product.getDescription()%></td>
-                <td><%=product.getPrice()%></td>
-                <td><%=product.getQuantity()%></td>
-                <td><input type="submit" name="productSelect" value="Buy"></td>
-            </tr>
+                <tr>
+                    <td><%=product.getName()%></td>
+                    <td><%=product.getDescription()%></td>
+                    <td><%=product.getPrice()%></td>
+                    <td><%=product.getQuantity()%></td>
+                    <td><input type="submit" name="productSelect" value="Buy"></td>
+                </tr>
             </form>
             <% }%>
         </table>
