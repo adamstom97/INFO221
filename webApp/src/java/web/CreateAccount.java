@@ -9,11 +9,14 @@ import dao.CustomerDB;
 import domain.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.Validator;
 
 /**
  * A servlet for creating a new account.
@@ -49,7 +52,26 @@ public class CreateAccount extends HttpServlet {
                     creditCardDetails, password);
             new CustomerDB().addCustomer(customer);
             
-            response.sendRedirect(".");
+            if (isObjectValid(customer, response)) {
+                response.sendRedirect(".");
+            }
+        }
+    }
+    
+    public boolean isObjectValid(Object domain, HttpServletResponse response) 
+            throws IOException {
+        Validator validator = new Validator();
+        List<ConstraintViolation> violations = validator.validate(domain);
+        if (violations.isEmpty()) {
+            return true;
+        } else {
+            String message = "<ul>";
+            for (ConstraintViolation violation : violations) {
+                message += "<li>" + violation.getMessage() + "</li>";
+            }
+            message += "</ul>";
+            response.sendError(422, message);
+            return false;
         }
     }
 

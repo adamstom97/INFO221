@@ -21,7 +21,7 @@
         <li><a href="index.jsp">Home</a></li>
         <li><a href="browseProducts.jsp">Browse Products</a></li>
         <li><a href="checkout.jsp">View Cart</a></li>
-        <li><a href="logIn.jsp">Log Out</a></li>
+        <li><a href="LogOut">Log Out</a></li>
     </ul>
 </nav>
 <%
