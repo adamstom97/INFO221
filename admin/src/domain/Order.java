@@ -17,7 +17,7 @@ import java.util.Date;
  * @version 3.0
  */
 public class Order {
-    private int orderID;
+    private Integer orderID;
     
     /**
      * The date on which the order is made, to be set upon confirmation of the 
@@ -53,13 +53,6 @@ public class Order {
      */
     public int getOrderID() {
         return orderID;
-    }
-
-    /**
-     * @param orderID   {@link Order#orderID}
-     */
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
     }
     
     /**
