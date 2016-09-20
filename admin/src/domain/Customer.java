@@ -6,6 +6,10 @@
 package domain;
 
 import java.util.Objects;
+import net.sf.oval.constraint.HasSubstring;
+import net.sf.oval.constraint.Length;
+import net.sf.oval.constraint.NotBlank;
+import net.sf.oval.constraint.NotNull;
 
 /**
  * A class containing all the information on a single customer's account for the
@@ -15,12 +19,31 @@ import java.util.Objects;
  * @version 3.0
  */
 public class Customer implements Comparable<Customer>{
-
+    @NotNull(message = "A username must be provided.")
+    @NotBlank(message = "A username must be provided.")
+    @Length(min=2, message="A username must contain at least two characters.")
     private String userName;
+    
+    @NotNull(message = "A name must be provided.")
+    @NotBlank(message = "A name must be provided.")
+    @Length(min=2, message="A name must contain at least two characters.")
     private String name;
+    
+    @NotNull(message = "An email address must be provided.")
+    @NotBlank(message = "An email address must be provided.")
+    @HasSubstring(value="@", message="Please enter an actual email address.")
     private String email;
+    
+    @NotNull(message = "An address must be provided.")
+    @NotBlank(message = "An address must be provided.")
     private String address;
+    
+    @NotNull(message = "Credit Card details must be provided.")
+    @NotBlank(message = "Credit Card details must be provided.")
     private String creditCardDetails;
+    
+    @NotNull(message = "A password must be provided.")
+    @NotBlank(message = "A password must be provided.")
     private String password;
 
     /**
