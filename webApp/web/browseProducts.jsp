@@ -22,7 +22,7 @@
             Categories:
             <ul>
                 <li><a href="browseProducts.jsp">All</a></li>
-                    <%                    ProductDAO list = new ProductDB();
+                    <%
                         Collection<String> categories = list.getCategoryList();
                         for (String category : categories) {
                     %>
@@ -42,6 +42,7 @@
         %>
         <table>
             <tr>
+                <th id="productID">Product ID</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
@@ -53,6 +54,7 @@
             %>
             <form action="AddProduct" method="post">
                 <tr>
+                    <td id="productID"><input type="text" name="productID" value="<%=product.getProductID()%>" /></td>
                     <td><%=product.getName()%></td>
                     <td><%=product.getDescription()%></td>
                     <td><%=product.getPrice()%></td>

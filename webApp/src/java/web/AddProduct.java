@@ -5,6 +5,8 @@
  */
 package web;
 
+import dao.ProductDB;
+import domain.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -36,6 +38,8 @@ public class AddProduct extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            Product product = new ProductDB().getProductByID(request.getParameter("productID"));
+            request.getSession().setAttribute("product", product);
             response.sendRedirect("/shop/addProduct.jsp");
         }
     }

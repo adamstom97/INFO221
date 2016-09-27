@@ -5,9 +5,12 @@
     Version    : 3.0
 --%>
 
+<%@page import="dao.ProductDB"%>
+<%@page import="dao.ProductDAO"%>
 <%@page import="domain.Order"%>
 <%@page import="domain.Customer"%>
 <%
+    ProductDAO list = new ProductDB();
     HttpSession currentSession = request.getSession();
     Customer customer = (Customer) currentSession.getAttribute("customer");
     if (customer != null) {
