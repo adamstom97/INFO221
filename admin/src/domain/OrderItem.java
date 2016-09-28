@@ -13,7 +13,7 @@ package domain;
  * @version 3.0
  */
 public class OrderItem {
-    private double quantityPurchased;
+    private Integer quantityPurchased;
     private Product product;
 
     /**
@@ -23,7 +23,7 @@ public class OrderItem {
      *                          wishes to buy
      * @param product           the product that the customer wishes to buy
      */
-    public OrderItem(double quantityPurchased, Product product) {
+    public OrderItem(Integer quantityPurchased, Product product) {
         this.quantityPurchased = quantityPurchased;
         this.product = product;
     }
@@ -37,14 +37,14 @@ public class OrderItem {
     /**
      * @return quantityPurchased    {@link OrderItem#quantityPurchased}
      */
-    public double getQuantityPurchased() {
+    public Integer getQuantityPurchased() {
         return quantityPurchased;
     }
 
     /**
      * @param quantityPurchased     {@link OrderItem#quantityPurchased}
      */
-    public void setQuantityPurchased(double quantityPurchased) {
+    public void setQuantityPurchased(Integer quantityPurchased) {
         this.quantityPurchased = quantityPurchased;
     }
     
@@ -68,7 +68,7 @@ public class OrderItem {
      * 
      * @return the total price of the item
      */
-    public double getItemTotal(){
+    public Double getItemTotal(){
         return quantityPurchased * product.getPrice();
     }
 }

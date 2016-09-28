@@ -41,8 +41,8 @@ public class ProductDB implements ProductDAO {
 
     @Override
     public void addProduct(Product product) {
-        String sql = "merge into products (productID, name, description, "
-                + "category, price, quantity) values (?,?,?,?,?,?)";
+        String sql = "MERGE INTO products (productID, name, description, "
+                + "category, price, quantity) VALUES (?,?,?,?,?,?)";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
             stmt.setInt(1, product.getProductID());
@@ -59,7 +59,7 @@ public class ProductDB implements ProductDAO {
 
     @Override
     public void deleteProduct(Product product) {
-        String sql = "delete from products where productID = ?";
+        String sql = "DELETE FROM products WHERE productID = ?";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
             stmt.setInt(1, product.getProductID());
@@ -71,7 +71,7 @@ public class ProductDB implements ProductDAO {
 
     @Override
     public Collection<Product> getProductList() {
-        String sql = "select * from products order by productID";
+        String sql = "SELECT * FROM products ORDER BY productID";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
             ResultSet rs = stmt.executeQuery();
@@ -91,7 +91,7 @@ public class ProductDB implements ProductDAO {
 
     @Override
     public Collection<String> getCategoryList() {
-        String sql = "select distinct category from products";
+        String sql = "SELECT DISTINCT category FROM products";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
             ResultSet rs = stmt.executeQuery();
@@ -107,7 +107,7 @@ public class ProductDB implements ProductDAO {
 
     @Override
     public Product getProductByID(String productID) {
-        String sql = "select * from products where productID = ?";
+        String sql = "SELECT * FROM products WHERE productID = ?";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
             if (productID.equals("")) {
@@ -131,7 +131,7 @@ public class ProductDB implements ProductDAO {
 
     @Override
     public Collection<Product> getProductsByCategory(String category) {
-        String sql = "select * from products where category = ?";
+        String sql = "SELECT * FROM products WHERE category = ?";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
             stmt.setString(1, category);

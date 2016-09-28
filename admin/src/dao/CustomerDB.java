@@ -38,8 +38,8 @@ public class CustomerDB implements CustomerDAO {
 
     @Override
     public void addCustomer(Customer customer) {
-        String sql = "merge into customers (userName, name, email, address,"
-                + " creditCardDetails, password) values (?,?,?,?,?,?)";
+        String sql = "MERGE INTO customers (userName, name, email, address,"
+                + " creditCardDetails, password) VALUES (?,?,?,?,?,?)";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
             stmt.setString(1, customer.getUserName());
@@ -56,7 +56,7 @@ public class CustomerDB implements CustomerDAO {
 
     @Override
     public Customer getCustomer(String userName, String password) {
-        String sql = "select * from customers where (userName=?) and "
+        String sql = "SELECT * FROM customers WHERE (userName=?) AND "
                 + "(password=?)";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
@@ -80,7 +80,7 @@ public class CustomerDB implements CustomerDAO {
     
     @Override
     public void deleteCustomer(Customer customer) {
-        String sql = "delete from customers where userName = ?";
+        String sql = "DELETE FROM customers WHERE userName = ?";
         try (Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
             stmt.setString(1, customer.getUserName());
