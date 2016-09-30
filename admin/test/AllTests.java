@@ -15,5 +15,5 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({dao.TestProductDAO.class, dao.TestCustomerDAO.class, 
-    dao.TestOrderDAO.class, gui.TestEntry.class, gui.TestDisplay.class})
+    gui.TestEntry.class, gui.TestDisplay.class})
 public class AllTests {}
