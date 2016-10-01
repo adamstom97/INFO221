@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>Create Account</title>
     </head>
     <body>
@@ -32,5 +33,6 @@
                 <input type="submit" name="create" value="Create Account">
             </fieldset>
         </form>
+        <%@include file="/WEB-INF/jspf/footer.jspf" %>
     </body>
 </html>

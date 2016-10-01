@@ -14,12 +14,14 @@
     HttpSession currentSession = request.getSession();
     Customer customer = (Customer) currentSession.getAttribute("customer");
     if (customer != null) {
+        if (currentSession.getAttribute("order") == null) {
         currentSession.setAttribute("order", new Order(customer));
+        }
 %>
-<p>
-    Welcome <%=customer.getName()%>
-</p>
 <nav>
+    <p>
+        Welcome <span class="emph"><%=customer.getName()%></span>
+    </p>
     <ul>
         <li><a href="index.jsp">Home</a></li>
         <li><a href="browseProducts.jsp">Browse Products</a></li>

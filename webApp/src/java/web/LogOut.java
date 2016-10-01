@@ -6,7 +6,6 @@
 package web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * A servlet for logging a customer out.
- * 
+ *
  * @author adamstom97
  * @version 3.0
  */
@@ -31,14 +30,11 @@ public class LogOut extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, 
+    protected void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            request.getSession().setAttribute("customer", null);
-            response.sendRedirect(".");
-        }
+        request.getSession().setAttribute("customer", null);
+        response.sendRedirect(".");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

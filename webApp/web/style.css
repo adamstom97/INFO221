@@ -1,0 +1,111 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 1, 2016, 11:21:49 AM
+    Author     : Adams
+*/
+
+html {
+    background-color: #778899;
+    text-align: center;
+    font: 18px Helvetica;
+    font-weight: bold;
+    color: #2c3e50;
+    padding: 0;
+}
+
+body {
+    width: 900px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #6690fc;
+}
+
+h1 {
+    background-color: #778899;
+    color: #f1f227;
+    padding: 15px;
+    font: Impact;
+}
+
+nav {
+    padding: 5px;
+}
+
+ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+}
+
+a {
+    border: 5px solid #2c3e50;
+    text-decoration: none;
+    color: #2c3e50;
+    padding: 5px;
+}
+
+a:hover {
+    border-color: #f1f227;
+    color: #f1f227;
+}
+
+table {
+    width: 800px;
+    border: 5px solid #2c3e50;
+    margin: auto;
+    padding: 5px;
+    table-layout: fixed;
+}
+
+th, .th {
+    color: #f1f227;
+}
+
+input[type="submit"] {
+    background-color: #6690fc;
+    font-weight: bold;
+    border: 5px solid #2c3e50;
+    color: #2c3e50;
+    padding: 5px;
+}
+
+input[type="submit"]:hover {
+    border-color: #f1f227;
+    font-weight: bold;
+    color: #f1f227;
+    cursor: pointer;
+}
+
+footer {
+    padding: 15px;
+}
+
+form {
+    width: 800px;
+    text-align: left;
+    margin: auto;
+}
+
+fieldset {
+    border: 5px solid #2c3e50;
+}
+
+fieldset input[type="text"], fieldset input[type="password"] {
+    float: right;
+    width: 600px;
+}
+
+fieldset input[type="submit"], #checkout {
+    float: right;
+    margin-top: 10px;
+}
+
+.emph {
+    color: #f1f227;
+}

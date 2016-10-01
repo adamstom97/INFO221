@@ -1,0 +1,9 @@
+<%-- 
+    Document   : footer          included in all web pages.
+    Author     : adamstom97
+    Version    : 3.0
+--%>
+
+<footer>
+    <p>Tom Adams - Otago University INFO221</p>
+</footer>

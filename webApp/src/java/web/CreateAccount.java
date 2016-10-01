@@ -8,7 +8,6 @@ package web;
 import dao.CustomerDB;
 import domain.Customer;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,12 +19,13 @@ import net.sf.oval.Validator;
 
 /**
  * A servlet for creating a new account.
- * 
+ *
  * @author adath325
  * @version 3.0
  */
 @WebServlet(name = "CreateAccount", urlPatterns = {"/CreateAccount"})
 public class CreateAccount extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,30 +35,27 @@ public class CreateAccount extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, 
+    protected void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String userName = request.getParameter("userName");
-            String name = request.getParameter("name");
-            String email = request.getParameter("email");
-            String address = request.getParameter("address");
-            String creditCardDetails = request.getParameter(
-                    "creditCardDetails");
-            String password = request.getParameter("password");
-            
-            Customer customer = new Customer(userName, name, email, address, 
-                    creditCardDetails, password);
-            new CustomerDB().addCustomer(customer);
-            
-            if (isObjectValid(customer, response)) {
-                response.sendRedirect(".");
-            }
+        String userName = request.getParameter("userName");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String creditCardDetails = request.getParameter(
+                "creditCardDetails");
+        String password = request.getParameter("password");
+
+        Customer customer = new Customer(userName, name, email, address,
+                creditCardDetails, password);
+        new CustomerDB().addCustomer(customer);
+
+        if (isObjectValid(customer, response)) {
+            response.sendRedirect(".");
         }
     }
-    
-    public boolean isObjectValid(Object domain, HttpServletResponse response) 
+
+    public boolean isObjectValid(Object domain, HttpServletResponse response)
             throws IOException {
         Validator validator = new Validator();
         List<ConstraintViolation> violations = validator.validate(domain);

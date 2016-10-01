@@ -8,7 +8,6 @@ package web;
 import dao.CustomerDB;
 import domain.Customer;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * A servlet for logging a customer in.
- * 
+ *
  * @author adamstom97
  * @version 3.0
  */
@@ -33,22 +32,19 @@ public class LogIn extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, 
+    protected void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String userName = request.getParameter("userName");
-            String password = request.getParameter("password");
-            
-            Customer customer = new CustomerDB().getCustomer(userName, 
-                    password);
-            if (customer == null) {
-                response.sendRedirect("/shop/logIn.jsp");
-            } else {
-                request.getSession().setAttribute("customer", customer);
-                response.sendRedirect(".");
-            }
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+
+        Customer customer = new CustomerDB().getCustomer(userName,
+                password);
+        if (customer == null) {
+            response.sendRedirect("/shop/logIn.jsp");
+        } else {
+            request.getSession().setAttribute("customer", customer);
+            response.sendRedirect(".");
         }
     }
 

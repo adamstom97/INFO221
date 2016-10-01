@@ -6,8 +6,6 @@
 package web;
 
 import dao.ProductDB;
-import domain.Order;
-import domain.OrderItem;
 import domain.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,16 +14,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * A servlet for adding products to a customer's order.
+ * A servlet for looking at a specific product to buy.
  *
  * @author adamstom97
  * @version 3.0
  */
-@WebServlet(name = "AddProduct", urlPatterns = {"/AddProduct"})
-public class AddProduct extends HttpServlet {
+@WebServlet(name = "BuyProduct", urlPatterns = {"/BuyProduct"})
+public class BuyProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,14 +36,9 @@ public class AddProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession currentSession = request.getSession();
-        Product product = (Product) currentSession.getAttribute("product");
-        String quantity = request.getParameter("quantity");
-        Order order = (Order) currentSession.getAttribute("order");
-        order.addItem(new OrderItem(Integer.parseInt(quantity), product));
-        currentSession.setAttribute("order", order);
-        currentSession.removeAttribute("product");
-        response.sendRedirect("/shop/checkout.jsp");
+        Product product = new ProductDB().getProductByID(request.getParameter("productID"));
+        request.getSession().setAttribute("product", product);
+        response.sendRedirect("/shop/addProduct.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

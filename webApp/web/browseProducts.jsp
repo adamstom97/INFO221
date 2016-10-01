@@ -13,6 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>Display Products</title>
     </head>
     <body>
@@ -42,7 +43,6 @@
         %>
         <table>
             <tr>
-                <th id="productID">Product ID</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
@@ -52,9 +52,9 @@
             <%
                 for (Product product : products) {
             %>
-            <form action="AddProduct" method="post">
+            <form action="BuyProduct" method="post">
                 <tr>
-                    <td id="productID"><input type="text" name="productID" value="<%=product.getProductID()%>" /></td>
+                    <input type="hidden" name="productID" value="<%=product.getProductID()%>" />
                     <td><%=product.getName()%></td>
                     <td><%=product.getDescription()%></td>
                     <td><%=product.getPrice()%></td>
@@ -64,5 +64,6 @@
             </form>
             <% }%>
         </table>
+        <%@include file="/WEB-INF/jspf/footer.jspf" %>
     </body>
 </html>

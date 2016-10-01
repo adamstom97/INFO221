@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>Log in</title>
     </head>
     <body>
@@ -27,5 +28,6 @@
         </form>
         <p>If you don't have an account then you can <a href='createAccount.jsp'
                                                         >create one</a>.</p>
+            <%@include file="/WEB-INF/jspf/footer.jspf" %>
     </body>
 </html>
