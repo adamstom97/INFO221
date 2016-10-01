@@ -32,11 +32,13 @@ h1 {
 }
 
 nav {
-    padding: 5px;
+    padding: 5px 0;
 }
 
 ul {
-    list-style: none;
+    list-style-type: none;
+    margin: 15px 0;
+    padding: 0;
 }
 
 nav li {
@@ -108,4 +110,8 @@ fieldset input[type="submit"], #checkout {
 
 .emph {
     color: #f1f227;
+}
+
+figure {
+    padding-top: 20px;
 }

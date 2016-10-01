@@ -5,12 +5,17 @@
  */
 package web;
 
+import dao.OrderDB;
+import domain.Customer;
+import domain.Order;
 import java.io.IOException;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * A servlet for processing and confirming a transaction.
@@ -33,7 +38,18 @@ public class Confirmation extends HttpServlet {
     protected void processRequest(HttpServletRequest request, 
             HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession currentSession = request.getSession();
+        Customer customer = (Customer) currentSession.getAttribute("customer");
+        if (customer != null) {
+            Order order = (Order) currentSession.getAttribute("order");
+            order.setDate(new Date());
+            new OrderDB().addOrder(order);
+            currentSession.setAttribute("order", new Order(customer));
+            // Email customer
             response.sendRedirect("/shop/confirmation.jsp");
+        } else {
+            response.sendRedirect("/shop/logIn.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
