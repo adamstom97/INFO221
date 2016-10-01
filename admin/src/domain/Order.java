@@ -39,11 +39,14 @@ public class Order {
      */
     public Order(Customer customer) {
         this.customer = customer;
-        this.date = new Date();
     }
 
     public Customer getCustomer() {
         return customer;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     /**
