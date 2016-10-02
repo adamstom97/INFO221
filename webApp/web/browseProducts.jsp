@@ -57,7 +57,7 @@
                     <input type="hidden" name="productID" value="<%=product.getProductID()%>" />
                     <td><%=product.getName()%></td>
                     <td><%=product.getDescription()%></td>
-                    <td><%=product.getPrice()%></td>
+                    <td><%=format.format(product.getPrice())%></td>
                     <td><%=product.getQuantity()%></td>
                     <td><input type="submit" name="productSelect" value="Buy"></td>
                 </tr>

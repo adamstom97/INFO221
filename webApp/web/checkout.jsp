@@ -36,16 +36,16 @@
             %>
                 <tr>
                     <td><%=item.getProduct()%></td>
-                    <td><%=item.getProduct().getPrice()%></td>
+                    <td><%=format.format(item.getProduct().getPrice())%></td>
                     <td><%=item.getQuantityPurchased()%></td>
-                    <td><%=item.getItemTotal()%></td>
+                    <td><%=format.format(item.getItemTotal())%></td>
                 </tr>
             <% }%>
             <tr class="emph">
                 <td>Total cost</td>
                 <td></td>
                 <td></td>
-                <td><%=order.getTotal()%></td>
+                <td><%=format.format(order.getTotal())%></td>
             </tr>
         </table>
         <form id="checkoutForm" action="Confirmation" method="post">

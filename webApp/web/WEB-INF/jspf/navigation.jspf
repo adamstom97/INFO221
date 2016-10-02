@@ -5,12 +5,15 @@
     Version    : 3.0
 --%>
 
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="dao.ProductDB"%>
 <%@page import="dao.ProductDAO"%>
 <%@page import="domain.Order"%>
 <%@page import="domain.Customer"%>
 <%
     ProductDAO list = new ProductDB();
+    NumberFormat format = new DecimalFormat("0.00");
     HttpSession currentSession = request.getSession();
     Customer customer = (Customer) currentSession.getAttribute("customer");
     if (customer != null) {
