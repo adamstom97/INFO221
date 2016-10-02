@@ -47,3 +47,20 @@ CREATE TABLE items (
     CONSTRAINT fk_items_order FOREIGN KEY (parentOrder) REFERENCES orders(orderID),
     CONSTRAINT fk_items_product FOREIGN KEY (product) REFERENCES products(productID)
 );
+
+CREATE VIEW order_receipt AS
+SELECT
+    orders.orderId,
+    orders.date,
+    customers.name AS customerName,
+    customers.address,
+    products.productId,
+    products.name AS productName,
+    products.price,
+    products.description,
+    items.quantity
+FROM orders
+INNER JOIN customers ON orders.customer=customers.username
+INNER JOIN items ON items.parentorder=orders.orderId
+INNER JOIN products ON items.product=products.productId
+ORDER BY orders.orderId, products.productId;
