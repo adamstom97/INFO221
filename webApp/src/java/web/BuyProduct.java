@@ -8,7 +8,6 @@ package web;
 import dao.ProductDB;
 import domain.Product;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * A servlet for looking at a specific product to buy.
  *
  * @author adamstom97
- * @version 3.0
+ * @version 4.0
  */
 @WebServlet(name = "BuyProduct", urlPatterns = {"/BuyProduct"})
 public class BuyProduct extends HttpServlet {
@@ -36,7 +35,8 @@ public class BuyProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        Product product = new ProductDB().getProductByID(request.getParameter("productID"));
+        Product product = new ProductDB().getProductByID(request.getParameter(
+                "productID"));
         request.getSession().setAttribute("product", product);
         response.sendRedirect("/shop/addProduct.jsp");
     }

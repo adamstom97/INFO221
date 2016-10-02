@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  * A servlet for processing and confirming a transaction.
  * 
  * @author adamstom97
- * @version 3.0
+ * @version 4.0
  */
 @WebServlet(name = "Confirmation", urlPatterns = {"/Confirmation"})
 public class Confirmation extends HttpServlet {
@@ -47,7 +47,8 @@ public class Confirmation extends HttpServlet {
             OrderDAO orderDB = new OrderDB();
             orderDB.addOrder(order);
             currentSession.setAttribute("order", new Order(customer));
-            SendEmail send = new SendEmail(customer, orderDB.getOrderID().toString());
+            SendEmail send = new SendEmail(customer, orderDB.getOrderID()
+                    .toString());
             send.start();
             response.sendRedirect("/shop/confirmation.jsp");
         } else {

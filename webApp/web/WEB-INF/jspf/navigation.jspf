@@ -2,7 +2,7 @@
     Document   : navigation     included in all web pages; differs depending on
                                 if a customer is logged in or not.
     Author     : adath325
-    Version    : 3.0
+    Version    : 4.0
 --%>
 
 <%@page import="java.text.NumberFormat"%>

@@ -21,7 +21,7 @@ import net.sf.oval.Validator;
  * A servlet for creating a new account.
  *
  * @author adath325
- * @version 3.0
+ * @version 4.0
  */
 @WebServlet(name = "CreateAccount", urlPatterns = {"/CreateAccount"})
 public class CreateAccount extends HttpServlet {

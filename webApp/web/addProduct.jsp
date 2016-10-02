@@ -2,7 +2,7 @@
     Document   : addProduct     for adding an amount of a chosen product to the
                                 customer's order.
     Author     : adath325
-    Version    : 3.0
+    Version    : 4.0
 --%>
 
 <%@page import="domain.Product"%>
@@ -16,7 +16,8 @@
     </head>
     <body>
         <%@include file="/WEB-INF/jspf/navigation.jspf" %>
-        <%            Product product = (Product) (currentSession.getAttribute("product"));
+        <%            Product product = (Product) (currentSession.getAttribute(
+                "product"));
         %>
         <h1>How many <%=product.getName()%>s do you want to buy?</h1>
         <table>
@@ -42,7 +43,8 @@
                     <legend>Select quantity</legend>
                     <label for="quantity">How many?</label>
                     <input type="text" id="quantity" name="quantity"><br>
-                    <input type="submit" name="quantitySelect" value="Add to Cart">
+                    <input type="submit" name="quantitySelect" 
+                           value="Add to Cart">
                 </fieldset>
             </form>
             <%@include file="/WEB-INF/jspf/footer.jspf" %>

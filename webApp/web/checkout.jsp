@@ -2,7 +2,7 @@
     Document   : checkout   displays the customer's chosen items and asks for
                             confirmation.
     Author     : adath325
-    Version    : 3.0
+    Version    : 4.0
 --%>
 
 <%@page import="domain.Product"%>
@@ -49,7 +49,8 @@
             </tr>
         </table>
         <form id="checkoutForm" action="Confirmation" method="post">
-            <input type="submit" name="checkout" id="checkout" value="Checkout Order">
+            <input type="submit" name="checkout" id="checkout" 
+                   value="Checkout Order">
         </form><br>
         <%@include file="/WEB-INF/jspf/footer.jspf" %>
     </body>

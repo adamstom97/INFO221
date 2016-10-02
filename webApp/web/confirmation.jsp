@@ -2,7 +2,7 @@
     Document   : confirmation   confirms that the customer's order has gone
                                 through
     Author     : adath325
-    Version    : 3.0
+    Version    : 4.0
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

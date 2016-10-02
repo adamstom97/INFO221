@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * A servlet for logging a customer out.
  *
  * @author adamstom97
- * @version 3.0
+ * @version 4.0
  */
 @WebServlet(name = "LogOut", urlPatterns = {"/LogOut"})
 public class LogOut extends HttpServlet {

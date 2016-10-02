@@ -1,7 +1,7 @@
 <%-- 
     Document   : displayProducts
     Author     : adath325
-    Version    : 3.0
+    Version    : 4.0
 --%>
 
 <%@page import="dao.ProductDAO"%>
@@ -27,7 +27,8 @@
                         Collection<String> categories = list.getCategoryList();
                         for (String category : categories) {
                     %>
-                <li><a href="browseProducts.jsp?category=<%=category%>"><%=category%></a></li>
+                <li><a href="browseProducts.jsp?category=<%=category%>">
+                        <%=category%></a></li>
                     <%
                         }
                     %>
@@ -54,12 +55,14 @@
             %>
             <form action="BuyProduct" method="post">
                 <tr>
-                    <input type="hidden" name="productID" value="<%=product.getProductID()%>" />
+                    <input type="hidden" name="productID" value="
+                           <%=product.getProductID()%>" />
                     <td><%=product.getName()%></td>
                     <td><%=product.getDescription()%></td>
                     <td><%=format.format(product.getPrice())%></td>
                     <td><%=product.getQuantity()%></td>
-                    <td><input type="submit" name="productSelect" value="Buy"></td>
+                    <td><input type="submit" name="productSelect" 
+                               value="Buy"></td>
                 </tr>
             </form>
             <% }%>

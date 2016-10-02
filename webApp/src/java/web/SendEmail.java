@@ -8,15 +8,17 @@ package web;
 
 import dao.DaoException;
 import domain.Customer;
-import domain.Order;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.MultiPartEmail;
 import report.Report;
 
 /**
- *
+ * A class for sending an email to the customer after their order has been
+ * processed, including generating and attaching a PDF receipt to the email.
+ * 
  * @author adath325
+ * @version 4.0
  */
 public class SendEmail extends java.lang.Thread{
     private Customer customer;

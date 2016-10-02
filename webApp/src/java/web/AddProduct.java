@@ -5,12 +5,10 @@
  */
 package web;
 
-import dao.ProductDB;
 import domain.Order;
 import domain.OrderItem;
 import domain.Product;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +20,7 @@ import javax.servlet.http.HttpSession;
  * A servlet for adding products to a customer's order.
  *
  * @author adamstom97
- * @version 3.0
+ * @version 4.0
  */
 @WebServlet(name = "AddProduct", urlPatterns = {"/AddProduct"})
 public class AddProduct extends HttpServlet {

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * A servlet for logging a customer in.
  *
  * @author adamstom97
- * @version 3.0
+ * @version 4.0
  */
 @WebServlet(name = "LogIn", urlPatterns = {"/LogIn"})
 public class LogIn extends HttpServlet {
