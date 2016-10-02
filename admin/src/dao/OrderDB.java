@@ -17,8 +17,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
- * @author Adams
+ * A dao class connected to the h2 database system, for customers.
+ * 
+ * @author adamstom97
+ * @version 4.0
  */
 public class OrderDB implements OrderDAO {
 

@@ -17,7 +17,7 @@ import net.sf.oval.constraint.NotNull;
  * sale at the shop. 
  * 
  * @author adath325
- * @version 3.0
+ * @version 4.0
  */
 public class Product implements Comparable<Product>{
     @NotNull(message = "ID must be provided.")

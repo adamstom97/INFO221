@@ -25,7 +25,7 @@ import dao.ProductDAO;
  * A class for testing the project's ProductEntry gui.
  * 
  * @author adamstom97
- * @version 3.0
+ * @version 4.0
  */
 public class TestEntry {
     private ProductDAO list;

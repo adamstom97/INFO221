@@ -17,7 +17,7 @@ import dao.ProductDAO;
  * sale at the shop. The products are taken from the list stored in ProductList.
  * 
  * @author adath325
- * @version 3.0
+ * @version 4.0
  */
 public class ProductDisplay extends javax.swing.JDialog {
     ProductDAO list;

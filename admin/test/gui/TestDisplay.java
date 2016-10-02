@@ -36,7 +36,7 @@ import dao.ProductDAO;
  * A class for testing the project's ProductDisplay gui.
  * 
  * @author adamstom97
- * @version 3.0
+ * @version 4.0
  */
 public class TestDisplay {
     private ProductDAO list;

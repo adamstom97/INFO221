@@ -12,7 +12,7 @@ import java.util.Collection;
  * An interface for all the product dao classes to implement.
  * 
  * @author adath325
- * @version 3.0
+ * @version 4.0
  */
 public interface ProductDAO {
     public void addProduct(Product product);

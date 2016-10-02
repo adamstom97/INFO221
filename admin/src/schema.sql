@@ -8,7 +8,7 @@
  * The schema for setting up a new database for the project with sql
  * 
  * @author adath325
- * @version 3.0
+ * @version 4.0
  */
 CREATE TABLE products (
     productID INTEGER NOT NULL,

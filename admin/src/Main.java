@@ -12,7 +12,7 @@ import dao.ProductDAO;
  * A Main class from which to run the entire admin project.
  * 
  * @author adath325
- * @version 3.0
+ * @version 4.0
  */
 public class Main {
     private static ProductDAO list = new ProductDB();

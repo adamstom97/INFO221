@@ -15,7 +15,7 @@ import java.sql.SQLException;
  * A dao class connected to the h2 database system, for customers.
  *
  * @author adamstom97
- * @version 3.0
+ * @version 4.0
  */
 public class CustomerDB implements CustomerDAO {
 

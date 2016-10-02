@@ -14,7 +14,7 @@ import java.util.Date;
  * many, that they are purchasing.
  *
  * @author adath325
- * @version 3.0
+ * @version 4.0
  */
 public class Order {
 
@@ -41,10 +41,16 @@ public class Order {
         this.customer = customer;
     }
 
+    /**
+     * @return customer {@link Order#customer}
+     */
     public Customer getCustomer() {
         return customer;
     }
 
+    /**
+     * @param date {@link Order#date}
+     */
     public void setDate(Date date) {
         this.date = date;
     }

@@ -16,7 +16,7 @@ import net.sf.oval.constraint.NotNull;
  * shop.
  *
  * @author adath325
- * @version 3.0
+ * @version 4.0
  */
 public class Customer implements Comparable<Customer>{
     @NotNull(message = "A username must be provided.")

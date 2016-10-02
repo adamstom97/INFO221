@@ -10,10 +10,10 @@ import domain.OrderItem;
 import java.util.ArrayList;
 
 /**
- * An interface for all the customer dao classes to implement.
+ * An interface for all the order dao classes to implement.
  * 
  * @author adamstom97
- * @version 3.0
+ * @version 4.0
  */
 public interface OrderDAO {
     public void addOrder(Order order);

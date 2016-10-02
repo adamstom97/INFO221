@@ -17,7 +17,7 @@ import java.util.TreeSet;
  * sale at the shop, so they can be displayed to the user from ProductDisplay.
  * 
  * @author adath325
- * @version 3.0
+ * @version 4.0
  */
 public class ProductList implements ProductDAO {
     

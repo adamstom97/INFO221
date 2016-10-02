@@ -16,8 +16,10 @@ import java.util.SortedMap;
 import java.util.TreeMap;
  
 /**
- *
- * @author Adams
+ * A data access object class for storing a list of all orders from the shop.
+ * 
+ * @author adamstom97
+ * @version 4.0
  */
 public class OrderList implements OrderDAO {
  
@@ -86,6 +88,10 @@ public class OrderList implements OrderDAO {
         orders.remove(orderID);
     }
  
+    /**
+     * A private class combining orderID and productID, to imitate the composite
+     * primary key of the OrderItem table in the H2 database.
+     */
     private class ItemKey implements Comparable<ItemKey> {
  
         private Integer orderID;

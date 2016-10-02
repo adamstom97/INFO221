@@ -20,7 +20,7 @@ import dao.ProductDAO;
  * ProductList to be stored.
  *
  * @author adath325
- * @version 3.0
+ * @version 4.0
  */
 public class ProductEntry extends javax.swing.JDialog {
 

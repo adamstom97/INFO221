@@ -19,7 +19,7 @@ import java.util.TreeSet;
  * A dao class connected to the h2 database system, for products.
  * 
  * @author adath325
- * @version 3.0
+ * @version 4.0
  */
 public class ProductDB implements ProductDAO {
     private String url = "jdbc:h2:tcp://localhost:9097/project;IFEXISTS=TRUE";
