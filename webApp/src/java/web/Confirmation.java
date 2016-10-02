@@ -5,6 +5,7 @@
  */
 package web;
 
+import dao.OrderDAO;
 import dao.OrderDB;
 import domain.Customer;
 import domain.Order;
@@ -43,9 +44,11 @@ public class Confirmation extends HttpServlet {
         if (customer != null) {
             Order order = (Order) currentSession.getAttribute("order");
             order.setDate(new Date());
-            new OrderDB().addOrder(order);
+            OrderDAO orderDB = new OrderDB();
+            orderDB.addOrder(order);
             currentSession.setAttribute("order", new Order(customer));
-            // Email customer
+            SendEmail send = new SendEmail(customer, orderDB.getOrderID().toString());
+            send.start();
             response.sendRedirect("/shop/confirmation.jsp");
         } else {
             response.sendRedirect("/shop/logIn.jsp");
