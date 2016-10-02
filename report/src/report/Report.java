@@ -24,12 +24,13 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author adath325
  */
 public class Report {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        String sql = "SELECT * FROM order_receipt";
+    String sql = "SELECT * FROM order_receipt";
+    
+    public Report(String orderID) {
+        sql = "SELECT * FROM order_receipt WHERE orderID=" + orderID;
+    }
+    
+    public void createReport() {
         try (Connection con = DriverManager.getConnection("jdbc:h2:tcp://localhost:9097/project;IFEXISTS=TRUE", "sa", "");
                 PreparedStatement stmt = con.prepareStatement(sql);) {
             ResultSet rs = stmt.executeQuery();
