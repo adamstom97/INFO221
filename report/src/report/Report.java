@@ -20,8 +20,11 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
- *
+ * A class for generating reports based on the shop's orders, or a specific 
+ * order if the orderID is provided.
+ * 
  * @author adath325
+ * @version 4.0
  */
 public class Report {
     String sql = "SELECT * FROM order_receipt";
