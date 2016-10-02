@@ -48,7 +48,7 @@
                 <td><%=order.getTotal()%></td>
             </tr>
         </table>
-        <form action="Confirmation" method="post">
+        <form id="checkoutForm" action="Confirmation" method="post">
             <input type="submit" name="checkout" id="checkout" value="Checkout Order">
         </form><br>
         <%@include file="/WEB-INF/jspf/footer.jspf" %>

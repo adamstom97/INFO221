@@ -89,18 +89,26 @@ footer {
 }
 
 form {
-    width: 800px;
-    text-align: left;
+    width: 400px;
     margin: auto;
+}
+
+#checkoutForm {
+    width: 800px;
 }
 
 fieldset {
     border: 5px solid #2c3e50;
+    text-align: right;
+}
+
+legend {
+    text-align: left;
 }
 
 fieldset input[type="text"], fieldset input[type="password"] {
     float: right;
-    width: 600px;
+    width: 250px;
 }
 
 fieldset input[type="submit"], #checkout {
