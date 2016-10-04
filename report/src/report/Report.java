@@ -34,14 +34,18 @@ public class Report {
     }
     
     public void createReport() {
-        try (Connection con = DriverManager.getConnection("jdbc:h2:tcp://localhost:9097/project;IFEXISTS=TRUE", "sa", "");
+        try (Connection con = DriverManager.getConnection(
+                "jdbc:h2:tcp://localhost:9097/project;IFEXISTS=TRUE", "sa", "");
                 PreparedStatement stmt = con.prepareStatement(sql);) {
             ResultSet rs = stmt.executeQuery();
             try {
-            JasperPrint report = JasperFillManager.fillReport("h:/INFO221/reports/receipt.jasper",
-                            new HashMap<String, Object>(), new JRResultSetDataSource(rs));
+            JasperPrint report = JasperFillManager.fillReport(
+                    "h:/INFO221/reports/receipt.jasper",
+                            new HashMap<String, Object>(), 
+                            new JRResultSetDataSource(rs));
             JasperViewer.viewReport(report);
-            JasperExportManager.exportReportToPdfFile(report, "h:/INFO221/reports/receipt.pdf");
+            JasperExportManager.exportReportToPdfFile(report, 
+                    "h:/INFO221/reports/receipt.pdf");
             } catch (JRException ex) {
                 throw new DaoException(ex.getMessage(), ex);
             }
