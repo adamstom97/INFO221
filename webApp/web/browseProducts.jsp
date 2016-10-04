@@ -55,8 +55,8 @@
             %>
             <form action="BuyProduct" method="post">
                 <tr>
-                    <input type="hidden" name="productID" value="
-                           <%=product.getProductID()%>" />
+                    <input type="hidden" name="productID" value=
+                           "<%=product.getProductID()%>" />
                     <td><%=product.getName()%></td>
                     <td><%=product.getDescription()%></td>
                     <td><%=format.format(product.getPrice())%></td>
