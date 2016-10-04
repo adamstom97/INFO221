@@ -7,6 +7,7 @@ import dao.ProductDB;
 import gui.MainMenu;
 import dao.ProductList;
 import dao.ProductDAO;
+import dao.ProductJpa;
 
 /**
  * A Main class from which to run the entire admin project.
@@ -15,7 +16,7 @@ import dao.ProductDAO;
  * @version 4.0
  */
 public class Main {
-    private static ProductDAO list = new ProductDB();
+    private static ProductDAO list = new ProductJpa();
 //    private static ProductDao list = new ProductList();
     
     /**

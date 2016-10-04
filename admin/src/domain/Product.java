@@ -6,6 +6,9 @@
 package domain;
 
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import net.sf.oval.constraint.Length;
 import net.sf.oval.constraint.Min;
 import net.sf.oval.constraint.NotBlank;
@@ -19,9 +22,12 @@ import net.sf.oval.constraint.NotNull;
  * @author adath325
  * @version 4.0
  */
+
+@Entity @Table(name="products")
 public class Product implements Comparable<Product>{
     @NotNull(message = "ID must be provided.")
     @NotNegative(message = "ID must be a positive number.")
+    @Id
     private Integer productID;
     
     @NotNull(message = "Name must be provided.")
